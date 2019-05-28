@@ -1,9 +1,9 @@
-# ![](assets/logo.png) CodeLab mobile app
+CodeLab mobile app
 
 ### Screens
 
-![](img/home-dark.png) home screen
-![](img/profile-dark.png) profile screen
+![](img/home-dark.png)
+![](img/profile-dark.png)
 
 ### Steps to build the app:
 
