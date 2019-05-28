@@ -21,10 +21,6 @@ CodeLab is an Android and IOS app build with React Native which display the list
 
 ### For development:
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 - run the following command to install dependencies `npm install`
 - run the following commend for test `npm test`
 - run the following command to start the app `expo start` or `npm start`
