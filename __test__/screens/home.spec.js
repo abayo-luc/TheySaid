@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Home from "../../src/screens/Home";
+import Home from "../../src/screens/Home/Home";
 
 describe("Home Screen", () => {
   test("renders correctly", () => {
