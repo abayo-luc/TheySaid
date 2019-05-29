@@ -1,6 +1,5 @@
 import React from "react";
 import renderer from "react-test-renderer";
-<<<<<<< HEAD
 import { Home } from "../../src/screens/Home/Home";
 import data from "../../src/data/data";
 import { arrayToObject } from "../../src/utils/helpers";
@@ -97,21 +96,5 @@ describe("Home Screen", () => {
       jest.runOnlyPendingTimers();
       expect(searchingUser).not.toBeCalled();
     });
-=======
-<<<<<<< HEAD:__test__/screens/profile.spec.js
-import Profile from "../../src/screens/Profile/Profile";
-
-describe("Profile Screen", () => {
-  test("renders correctly", () => {
-    const tree = renderer.create(<Profile />).toJSON();
-=======
-import Home from "../../src/screens/Home";
-
-describe("Home Screen", () => {
-  test("renders correctly", () => {
-    const tree = renderer.create(<Home />).toJSON();
->>>>>>> [feature #166258383] build home page:__test__/screens/home.spec.js
-    expect(tree).toMatchSnapshot();
->>>>>>> [feature #166258383] build home page
   });
 });
