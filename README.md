@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/abayo-luc/CodeLab/tree/ch-setup-repo-166240371.svg?style=svg)](https://circleci.com/gh/abayo-luc/CodeLab/tree/ch-setup-repo-166240371)
+[![Coverage Status](https://coveralls.io/repos/github/abayo-luc/CodeLab/badge.svg?branch=ch-setup-repo-166240371)](https://coveralls.io/github/abayo-luc/CodeLab?branch=ch-setup-repo-166240371)
+
 ### CodeLab mobile app
 
 CodeLab is an Android and IOS app build with React Native which display the list of Java Developers in Lagos.
