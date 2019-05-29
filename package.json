@@ -6,12 +6,8 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
-<<<<<<< HEAD
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "test:coverage": "npm run test -- -u && npm run coveralls"
-=======
-    "coveralls": "cat ./coverage/lcov.info"
->>>>>>> [feature #166240371] add coverage reporter
   },
   "dependencies": {
     "expo": "^32.0.0",
@@ -22,7 +18,6 @@
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",
     "coveralls": "^3.0.3",
-<<<<<<< HEAD
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.3.0",
@@ -30,8 +25,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.13.0",
-=======
->>>>>>> [feature #166240371] add coverage reporter
     "jest": "^24.8.0",
     "jest-react-native": "^18.0.0",
     "prettier": "^1.17.1",
