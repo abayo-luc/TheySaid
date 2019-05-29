@@ -6,11 +6,10 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - save_cache:
+        key: dependency-cache-{{ checksum "package.json" }}
+        paths:
+          - ./node_modules
       - run:
           name: 'Run Jest and Collect Coverage Reports'
-          command: npm test -- -u
-      - store_artifacts:
-          path: coverage
-      - run:
-          name: 'Report coverage to coveralls'
-          command: npm run coveralls
+          command: npm run test:coverage

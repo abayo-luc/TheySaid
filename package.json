@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "eject": "expo eject",
     "test": "jest",
-    "coveralls": "cat ./coverage/lcov.info"
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test:coverage": "npm run test -- -u && npm run coveralls"
   },
   "dependencies": {
     "expo": "^32.0.0",
