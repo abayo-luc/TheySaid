@@ -20,7 +20,8 @@ export default EStyleSheet.create({
     paddingTop: 5
   },
   listStyle: {
-    paddingTop: 10
+    paddingTop: 10,
+    flex: 1
   },
   listHeader: {
     marginTop: 10,

@@ -1,25 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { View, Text, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CardContainer from "../Cards/CardContainer";
 import styles from "./styles";
 
-const UserList = () => {
+const UserList = ({ username, email, avatar }) => {
   return (
     <View style={styles.userListContainer}>
       <CardContainer style={styles.row}>
         <View style={styles.row}>
           <Image
             source={{
-              uri: `https://avatars1.githubusercontent.com/u/20681465?s=460&v=4`
+              uri: avatar
             }}
             coverMode="contain"
             style={styles.avatar}
           />
 
           <View style={styles.userInfo}>
-            <Text style={styles.textStyle}>John Doe</Text>
-            <Text style={styles.textStyle}>john.doe@test.com</Text>
+            <Text style={styles.textStyle}>{username}</Text>
+            <Text style={styles.textStyle}>{email || ""}</Text>
           </View>
         </View>
         <View style={styles.circle}>
@@ -32,6 +33,16 @@ const UserList = () => {
       </CardContainer>
     </View>
   );
+};
+
+UserList.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string
+};
+
+UserList.defaultProps = {
+  email: ""
 };
 
 export default UserList;
