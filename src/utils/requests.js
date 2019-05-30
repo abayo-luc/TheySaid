@@ -1,6 +1,7 @@
+import { API_KEY } from "react-native-dotenv";
+
 const GITHUB_API = `https://api.github.com/search/users?q=location:lagos+language:java`;
 
-const { API_KEY } = process.env;
 export const getUsers = page => {
   const headers = {
     "Content-Type": "application/json",

@@ -8,3 +8,4 @@ npm-debug.*
 coverage
 **/__snapshots__
 .env
+**/envirnoment.js
