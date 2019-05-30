@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.0-browsers
+    steps:
+      - checkout
+      - run:
+          name: 'Install Dependencies'
+          command: npm install
+      - run:
+          name: 'Set Up CodeClimate'
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: 'Run Jest and Collect Coverage Reports'
+          command: |
+            ./cc-test-reporter before-build
+            npm run test:coverage
+            ./cc-test-reporter after-build --exit-code $?
