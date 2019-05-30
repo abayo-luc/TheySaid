@@ -8,5 +8,9 @@ npm-debug.*
 coverage
 **/__snapshots__
 .env
+<<<<<<< HEAD
 **/envirnoment.js
 **/keys.json
+=======
+**/envirnoment.js
+>>>>>>> move screte key to .env
