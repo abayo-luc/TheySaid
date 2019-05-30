@@ -43,4 +43,14 @@ UserList.defaultProps = {
   email: ""
 };
 
+UserList.propTypes = {
+  avatar: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  email: PropTypes.string
+};
+
+UserList.defaultProps = {
+  email: ""
+};
+
 export default UserList;

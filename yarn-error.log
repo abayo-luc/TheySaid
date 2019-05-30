@@ -1,5 +1,9 @@
 Arguments: 
+<<<<<<< HEAD
   /usr/local/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js add module:metro-react-native-babel-preset --dev
+=======
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js add redux react-redux redux-sagga
+>>>>>>> [Feature #166258383] integrate end-point
 
 PATH: 
   /Users/luc/.rvm/gems/ruby-2.6.0/bin:/Users/luc/.rvm/gems/ruby-2.6.0@global/bin:/Users/luc/.rvm/rubies/ruby-2.6.0/bin:/usr/local/opt/sqlite/bin:/Library/Frameworks/Python.framework/Versions/3.7/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/luc/.rvm/bin
@@ -14,6 +18,7 @@ Platform:
   darwin x64
 
 Trace: 
+<<<<<<< HEAD
   Error: module:metro-react-native-babel-preset: Invalid protocol: module:
       at Request.module.exports.Request.init (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:129810:31)
       at new Request (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:129483:8)
@@ -25,6 +30,19 @@ Trace:
       at new F (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:5228:28)
       at RequestManager.request (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:65825:19)
       at NpmRegistry.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:31610:42)
+=======
+  Error: https://registry.yarnpkg.com/redux-sagga: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:66058:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:129541:22)
+      at Request.emit (events.js:189:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:130513:10)
+      at Request.emit (events.js:189:13)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:130435:12)
+      at Object.onceWrapper (events.js:277:13)
+      at IncomingMessage.emit (events.js:194:15)
+      at endReadableNT (_stream_readable.js:1125:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+>>>>>>> [Feature #166258383] integrate end-point
 
 npm manifest: 
   {
@@ -42,6 +60,7 @@ npm manifest:
     "dependencies": {
       "@expo/vector-icons": "^10.0.1",
       "expo": "^32.0.0",
+<<<<<<< HEAD
       "metro-react-native-babel-preset": "^0.54.1",
       "prop-types": "^15.7.2",
       "react": "16.5.0",
@@ -52,6 +71,13 @@ npm manifest:
       "react-redux": "6.x",
       "redux": "^4.0.1",
       "redux-saga": "^1.0.2"
+=======
+      "prop-types": "^15.7.2",
+      "react": "16.5.0",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+      "react-native-extended-stylesheet": "^0.11.2",
+      "react-navigation": "^3.11.0"
+>>>>>>> [Feature #166258383] integrate end-point
     },
     "devDependencies": {
       "babel-eslint": "^10.0.1",
@@ -858,7 +884,11 @@ Lockfile:
       pirates "^4.0.0"
       source-map-support "^0.5.9"
   
+<<<<<<< HEAD
   "@babel/runtime@^7.0.0", "@babel/runtime@^7.1.2", "@babel/runtime@^7.3.1":
+=======
+  "@babel/runtime@^7.1.2":
+>>>>>>> [Feature #166258383] integrate end-point
     version "7.4.5"
     resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.5.tgz#582bb531f5f9dc67d2fcb682979894f75e253f12"
     integrity sha512-TuI4qpWZP6lGOGIuGWtp9sPluqYICmbk8T/1vpSysqJxRPkudh/ofFWyqdcMsDf2s7KvDL4/YHgKyvcS3g9CJQ==
@@ -1097,6 +1127,7 @@ Lockfile:
       react-native-safe-area-view "^0.14.1"
       react-native-screens "^1.0.0 || ^1.0.0-alpha"
   
+<<<<<<< HEAD
   "@redux-saga/core@^1.0.2":
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/@redux-saga/core/-/core-1.0.2.tgz#4336a5bb4253e5ca69681c25a863fbbc03ea6d88"
@@ -1141,6 +1172,8 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@redux-saga/types/-/types-1.0.2.tgz#1d94f02800b094753f9271c206a26c2a06ca14ee"
     integrity sha512-8/qcMh15507AnXJ3lBeuhsdFwnWQqnp68EpUuHlYPixJ5vjVmls7/Jq48cnUlrZI8Jd9U1jkhfCl0gaT5KMgVw==
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   "@types/babel__core@^7.1.0":
     version "7.1.2"
     resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -1816,6 +1849,7 @@ Lockfile:
     dependencies:
       babel-runtime "^6.22.0"
   
+<<<<<<< HEAD
   babel-plugin-dotenv@0.1.1:
     version "0.1.1"
     resolved "https://registry.yarnpkg.com/babel-plugin-dotenv/-/babel-plugin-dotenv-0.1.1.tgz#9c8faea67a7c034fe7e94099187ab2e7573400bc"
@@ -1823,6 +1857,8 @@ Lockfile:
     dependencies:
       dotenv "^2.0.0"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   babel-plugin-istanbul@^4.1.6:
     version "4.1.6"
     resolved "https://registry.yarnpkg.com/babel-plugin-istanbul/-/babel-plugin-istanbul-4.1.6.tgz#36c59b2192efce81c5b378321b74175add1c9a45"
@@ -3040,11 +3076,14 @@ Lockfile:
       dom-serializer "0"
       domelementtype "1"
   
+<<<<<<< HEAD
   dotenv@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-2.0.0.tgz#bd759c357aaa70365e01c96b7b0bec08a6e0d949"
     integrity sha1-vXWcNXqqcDZeAclrewvsCKbg2Uk=
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   ecc-jsbn@~0.1.1:
     version "0.1.2"
     resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
@@ -6290,6 +6329,7 @@ Lockfile:
     dependencies:
       "@babel/helper-module-imports" "^7.0.0"
   
+<<<<<<< HEAD
   metro-babel7-plugin-react-transform@0.54.1:
     version "0.54.1"
     resolved "https://registry.yarnpkg.com/metro-babel7-plugin-react-transform/-/metro-babel7-plugin-react-transform-0.54.1.tgz#5335b810284789724886dc483d5bde9c149a1996"
@@ -6297,6 +6337,8 @@ Lockfile:
     dependencies:
       "@babel/helper-module-imports" "^7.0.0"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   metro-cache@0.45.6:
     version "0.45.6"
     resolved "https://registry.yarnpkg.com/metro-cache/-/metro-cache-0.45.6.tgz#7ca9f66bc038a309d21e4c5264b806a692ca5a55"
@@ -6420,6 +6462,7 @@ Lockfile:
       metro-babel7-plugin-react-transform "0.49.2"
       react-transform-hmr "^1.0.4"
   
+<<<<<<< HEAD
   metro-react-native-babel-preset@^0.54.1:
     version "0.54.1"
     resolved "https://registry.yarnpkg.com/metro-react-native-babel-preset/-/metro-react-native-babel-preset-0.54.1.tgz#b8f03865c381841d7f8912e7ba46804ea3a928b8"
@@ -6462,6 +6505,8 @@ Lockfile:
       metro-babel7-plugin-react-transform "0.54.1"
       react-transform-hmr "^1.0.4"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   metro-resolver@0.45.6:
     version "0.45.6"
     resolved "https://registry.yarnpkg.com/metro-resolver/-/metro-resolver-0.45.6.tgz#385407cf8c086f005775d2d28178cf36984273f9"
@@ -7638,7 +7683,11 @@ Lockfile:
       shell-quote "^1.6.1"
       ws "^3.3.1"
   
+<<<<<<< HEAD
   react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.2, react-is@^16.8.4, react-is@^16.8.6:
+=======
+  react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is@^16.8.6:
+>>>>>>> [Feature #166258383] integrate end-point
     version "16.8.6"
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
     integrity sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
@@ -7653,6 +7702,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
     integrity sha1-QHTdY7SXPmOX2c5Q6XtXx3pRjp0=
   
+<<<<<<< HEAD
   react-native-dotenv@^0.2.0:
     version "0.2.0"
     resolved "https://registry.yarnpkg.com/react-native-dotenv/-/react-native-dotenv-0.2.0.tgz#311551cb6a35a3dcfede648bded55c0e3ece579d"
@@ -7660,6 +7710,8 @@ Lockfile:
     dependencies:
       babel-plugin-dotenv "0.1.1"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   react-native-extended-stylesheet@^0.11.2:
     version "0.11.2"
     resolved "https://registry.yarnpkg.com/react-native-extended-stylesheet/-/react-native-extended-stylesheet-0.11.2.tgz#4f7568f809623a2e9c186f464d7341f4ac13c806"
@@ -7832,6 +7884,7 @@ Lockfile:
       lodash "^4.6.1"
       react-deep-force-update "^1.0.0"
   
+<<<<<<< HEAD
   react-redux@6.x:
     version "6.0.1"
     resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-6.0.1.tgz#0d423e2c1cb10ada87293d47e7de7c329623ba4d"
@@ -7844,6 +7897,8 @@ Lockfile:
       prop-types "^15.7.2"
       react-is "^16.8.2"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   react-test-renderer@^16.0.0-0, react-test-renderer@^16.5.0, react-test-renderer@^16.8.6:
     version "16.8.6"
     resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.8.6.tgz#188d8029b8c39c786f998aa3efd3ffe7642d5ba1"
@@ -7957,6 +8012,7 @@ Lockfile:
     dependencies:
       util.promisify "^1.0.0"
   
+<<<<<<< HEAD
   redux-saga@^1.0.2:
     version "1.0.2"
     resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-1.0.2.tgz#0599703f975438f1b2f9d2b9a965ec58f0fdfcd7"
@@ -7972,6 +8028,8 @@ Lockfile:
       loose-envify "^1.4.0"
       symbol-observable "^1.2.0"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   reflect.ownkeys@^0.2.0:
     version "0.2.0"
     resolved "https://registry.yarnpkg.com/reflect.ownkeys/-/reflect.ownkeys-0.2.0.tgz#749aceec7f3fdf8b63f927a04809e90c5c0b3460"
@@ -8790,11 +8848,14 @@ Lockfile:
     dependencies:
       has-flag "^3.0.0"
   
+<<<<<<< HEAD
   symbol-observable@^1.2.0:
     version "1.2.0"
     resolved "https://registry.yarnpkg.com/symbol-observable/-/symbol-observable-1.2.0.tgz#c22688aed4eab3cdc2dfeacbb561660560a00804"
     integrity sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   symbol-tree@^3.2.2:
     version "3.2.2"
     resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
@@ -8999,6 +9060,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
+<<<<<<< HEAD
   typescript-compare@^0.0.2:
     version "0.0.2"
     resolved "https://registry.yarnpkg.com/typescript-compare/-/typescript-compare-0.0.2.tgz#7ee40a400a406c2ea0a7e551efd3309021d5f425"
@@ -9018,6 +9080,8 @@ Lockfile:
     dependencies:
       typescript-compare "^0.0.2"
   
+=======
+>>>>>>> [Feature #166258383] integrate end-point
   ua-parser-js@^0.7.18, ua-parser-js@^0.7.19:
     version "0.7.19"
     resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"
