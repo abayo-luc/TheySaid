@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/abayo-luc/CodeLab/tree/ch-setup-repo-166240371.svg?style=svg)](https://circleci.com/gh/abayo-luc/CodeLab/tree/ch-setup-repo-166240371)
 [![Coverage Status](https://coveralls.io/repos/github/abayo-luc/CodeLab/badge.svg?branch=ch-setup-repo-166240371)](https://coveralls.io/github/abayo-luc/CodeLab?branch=ch-setup-repo-166240371)
+[![Maintainability](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/maintainability)](https://codeclimate.com/github/abayo-luc/CodeLab/maintainability)
 
 ### CodeLab mobile app
 
