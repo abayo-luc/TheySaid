@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.1",
+    "dot-env": "^0.0.1",
     "expo": "^32.0.0",
     "prop-types": "^15.7.2",
     "react": "16.5.0",
