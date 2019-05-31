@@ -13,6 +13,7 @@ import Loading from "../../components/ActivityIndicators/Loading";
 import { fetchUsers } from "../../store/actions";
 
 const END_THRESHOLD = Platform.OS === "ios" ? 0 : 1;
+
 export class Home extends Component {
   state = {
     page: 1
@@ -56,9 +57,11 @@ export class Home extends Component {
           <Text style={styles.locationText}>Java developers in Lagos</Text>
         </CardContainer>
         <View style={styles.titleContainer}>
-          {numberOfUsers > 1 && (
-            <Text style={styles.titleText}>Developers: {numberOfUsers}</Text>
-          )}
+          {numberOfUsers !== 0 ? (
+            <Text style={styles.titleText} testID="number-of-devs">
+              Developers: {numberOfUsers}
+            </Text>
+          ) : null}
         </View>
       </View>
     );
@@ -86,7 +89,6 @@ export class Home extends Component {
               ListHeaderComponent={this.renderHeader}
               keyExtractor={this.keyExtractor}
               style={styles.listStyle}
-              // inverted
               onRefresh={this.refreshData}
               refreshing={isFetching}
               onEndReachedThreshold={END_THRESHOLD}
