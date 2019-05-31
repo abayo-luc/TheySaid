@@ -23,8 +23,7 @@ CodeLab is an Android and IOS app build with React Native which display the list
 
 - run the following command to install dependencies `npm install`
 - run the following commend for test `npm test`
-- # run the following command to start the app `expo start` or `npm start`
-- run the following command in a terminal `npm install`
+- run the following command to start the app `expo start` or `npm start`
 - run the following command to start the app `expo start`
 
 On Android open your Expo client to scan the QR code in your terminal:
