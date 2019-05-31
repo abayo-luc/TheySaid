@@ -1,16 +1,17 @@
 import { takeEvery, call, put } from "redux-saga/effects";
-import { FETCHING_USER, USER_FETCHED_SUCCESS } from "../type";
+import { FETCHING_USER } from "../type";
+import * as actions from "../actions";
 import { getUsers } from "../../utils/requests";
 import { arrayToObject } from "../../utils/helpers";
 
-function* fetchUser({ page }) {
+export function* fetchUser({ page }) {
   try {
     const response = yield call(getUsers, page);
     const { items } = response;
     const users = yield arrayToObject(items, "node_id");
-    yield put({ type: USER_FETCHED_SUCCESS, payload: users });
+    yield put(actions.setUsers(users));
   } catch (error) {
-    console.error(error);
+    yield put(actions.setFetchError);
   }
 }
 
