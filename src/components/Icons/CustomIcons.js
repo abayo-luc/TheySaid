@@ -5,9 +5,10 @@ import { Ionicons } from "@expo/vector-icons";
 
 const ICON_PREFIX = Platform.OS === "ios" ? "ios" : "md";
 
-const CustomIcon = ({ name, size, color }) => {
-  return <Ionicons name={`${ICON_PREFIX}-${name}`} size={size} color={color} />;
-};
+const CustomIcon = ({ name, size, color }) => (
+  <Ionicons name={`${ICON_PREFIX}-${name}`} size={size} color={color} />
+);
+
 CustomIcon.propTypes = {
   name: PropTypes.string,
   size: PropTypes.number,
