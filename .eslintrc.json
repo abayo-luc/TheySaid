@@ -17,6 +17,7 @@
       {
         "allowTemplateLiterals": true
       }
-    ]
+    ],
+    "no-param-reassign": "off"
   }
 }
