@@ -1,7 +1,9 @@
 import {
   FETCHING_USER,
   USER_FETCHED_SUCCESS,
-  USER_FETCH_FAILED
+  USER_FETCH_FAILED,
+  SEARCHING_USER,
+  SEARCHING_USER_COMPLETE
 } from "../type";
 
 const INITIAL_STATE = {
@@ -30,6 +32,19 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         isFetching: false,
         errors: { message: "Unable to fetch!" }
+      };
+    case SEARCHING_USER:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case SEARCHING_USER_COMPLETE:
+      return {
+        ...state,
+        isFetching: false,
+        allUsers: {
+          ...payload
+        }
       };
     default:
       return state;

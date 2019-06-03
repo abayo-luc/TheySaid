@@ -10,14 +10,17 @@ import CardContainer from "../../components/Cards/CardContainer";
 import UserList from "../../components/ListItem/UserList";
 import CustomIcon from "../../components/Icons/CustomIcons";
 import Loading from "../../components/ActivityIndicators/Loading";
-import { fetchUsers } from "../../store/actions";
+import { fetchUsers, searchingUser } from "../../store/actions";
 
 const END_THRESHOLD = Platform.OS === "ios" ? 0 : 1;
 
 export class Home extends Component {
   state = {
-    page: 1
+    page: 1,
+    searchQuery: ""
   };
+
+  searchUsersTimeOut = 0;
 
   componentDidMount() {
     this.fetchAllUsers();
@@ -39,16 +42,32 @@ export class Home extends Component {
     this.fetchAllUsers(1);
   };
 
+  handleSearchInput = text => {
+    const { isFetching } = this.props;
+    if (this.searchUsersTimeOut) clearTimeout(this.searchUsersTimeOut);
+    this.setState({
+      searchQuery: text
+    });
+
+    if (isFetching) {
+      return;
+    }
+    this.searchUsersTimeOut = setTimeout(() => {
+      const { searchingUser: searchUsers } = this.props;
+      searchUsers(text);
+    }, 100);
+  };
+
   fetchAllUsers = () => {
-    const { page } = this.state;
+    const { page, searchQuery } = this.state;
     const { fetchUsers: getUsers, isFetching } = this.props;
-    if (!isFetching) {
+    if (!isFetching && !searchQuery) {
       getUsers(page);
     }
   };
 
   renderHeader = () => {
-    const { allUsers } = this.props;
+    const { allUsers, isFetching } = this.props;
     const numberOfUsers = Object.keys(allUsers).length;
     return (
       <View style={styles.listHeader}>
@@ -57,14 +76,22 @@ export class Home extends Component {
           <Text style={styles.locationText}>Java developers in Lagos</Text>
         </CardContainer>
         <View style={styles.titleContainer}>
-          {numberOfUsers !== 0 ? (
-            <Text style={styles.titleText} testID="number-of-devs">
-              Developers: {numberOfUsers}
-            </Text>
-          ) : null}
+          <Text style={styles.titleText} testID="number-of-devs">
+            {this.renderHeaderText(numberOfUsers, isFetching)}
+          </Text>
         </View>
       </View>
     );
+  };
+
+  renderHeaderText = (number, isFetching) => {
+    if (number !== 0 && !isFetching) {
+      return `Developers: ${number}`;
+    }
+    if (number === 0 && !isFetching) {
+      return `No developer found!`;
+    }
+    return "";
   };
 
   renderItem = ({ item }) => (
@@ -73,12 +100,16 @@ export class Home extends Component {
 
   render() {
     const { allUsers, isFetching } = this.props;
+    const { searchQuery } = this.state;
     const users = Object.values(allUsers);
     return (
       <Container>
         <StatusBar barStyle="light-content" />
         <View style={styles.header}>
-          <InputIcon />
+          <InputIcon
+            onChangeText={this.handleSearchInput}
+            value={searchQuery}
+          />
         </View>
         <View style={styles.content}>
           <View style={{ flex: 1 }}>
@@ -105,7 +136,8 @@ export class Home extends Component {
 Home.propTypes = {
   allUsers: PropTypes.shape({}).isRequired,
   isFetching: PropTypes.bool.isRequired,
-  fetchUsers: PropTypes.func.isRequired
+  fetchUsers: PropTypes.func.isRequired,
+  searchingUser: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ users }) => ({
@@ -114,5 +146,5 @@ const mapStateToProps = ({ users }) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchUsers }
+  { fetchUsers, searchingUser }
 )(Home);

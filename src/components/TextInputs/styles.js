@@ -16,6 +16,8 @@ export default EStyleSheet.create({
   },
   input: {
     marginLeft: 10,
-    fontSize: 14
+    fontSize: 14,
+    height: "80%",
+    width: "90%"
   }
 });
