@@ -10,19 +10,15 @@ const headers = {
   "Content-Type": "application/json",
   Authorization: `token ${API_KEY}`
 };
-export const getUsers = page => {
-  return fetch(
-    `${GITHUB_API_BASE}${LOCATION_LANGUAGE}&per_page=50&page=${page}`,
-    {
-      headers: {
-        ...headers
-      }
+export const getUsers = page =>
+  fetch(`${GITHUB_API_BASE}${LOCATION_LANGUAGE}&per_page=50&page=${page}`, {
+    headers: {
+      ...headers
     }
-  ).then(res => res.json());
-};
+  }).then(res => res.json());
 
-export const getUser = (username, page = 1) => {
-  return fetch(
+export const getUser = (username, page = 1) =>
+  fetch(
     `${GITHUB_API_BASE}${username}+${LOCATION_LANGUAGE}&per_page=50&page=${page}`,
     {
       headers: {
@@ -30,4 +26,3 @@ export const getUser = (username, page = 1) => {
       }
     }
   ).then(res => res.json());
-};

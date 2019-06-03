@@ -13,6 +13,7 @@ const InputIcon = ({ onChangeText, value }) => (
       placeholderTextColor={styles.$themeColor}
       onChangeText={onChangeText}
       value={value}
+      autoCapitalize="none"
     />
   </View>
 );

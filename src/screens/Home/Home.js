@@ -15,12 +15,14 @@ import { fetchUsers, searchingUser } from "../../store/actions";
 const END_THRESHOLD = Platform.OS === "ios" ? 0 : 1;
 
 export class Home extends Component {
-  state = {
-    page: 1,
-    searchQuery: ""
-  };
-
-  searchUsersTimeOut = 0;
+  constructor(props) {
+    super(props);
+    this.searchUsersTimeOut = 0;
+    this.state = {
+      page: 1,
+      searchQuery: ""
+    };
+  }
 
   componentDidMount() {
     this.fetchAllUsers();
@@ -44,13 +46,15 @@ export class Home extends Component {
 
   handleSearchInput = text => {
     const { isFetching } = this.props;
-    if (this.searchUsersTimeOut) clearTimeout(this.searchUsersTimeOut);
     this.setState({
       searchQuery: text
     });
 
     if (isFetching) {
       return;
+    }
+    if (this.searchUsersTimeOut) {
+      clearTimeout(this.searchUsersTimeOut);
     }
     this.searchUsersTimeOut = setTimeout(() => {
       const { searchingUser: searchUsers } = this.props;
