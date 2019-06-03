@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import CardContainer from "../Cards/CardContainer";
 import styles from "./styles";
 
-const UserList = ({ username, email, avatar }) => (
+const UserList = ({ username, email, avatar, onNavigate }) => (
   <View style={styles.userListContainer}>
     <CardContainer style={styles.row}>
       <View style={styles.row}>
@@ -22,13 +22,13 @@ const UserList = ({ username, email, avatar }) => (
           <Text style={styles.textStyle}>{email || ""}</Text>
         </View>
       </View>
-      <View style={styles.circle}>
+      <TouchableOpacity style={styles.circle} onPress={onNavigate}>
         <Ionicons
           name="ios-arrow-round-forward"
           size={32}
           color={styles.$themeColor}
         />
-      </View>
+      </TouchableOpacity>
     </CardContainer>
   </View>
 );
@@ -36,6 +36,7 @@ const UserList = ({ username, email, avatar }) => (
 UserList.propTypes = {
   avatar: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func.isRequired,
   email: PropTypes.string
 };
 

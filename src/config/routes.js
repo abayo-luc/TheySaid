@@ -9,7 +9,12 @@ const mainStack = createStackNavigator({
       header: () => null
     }
   },
-  Profile
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      title: "Profile"
+    }
+  }
 });
 
 export default createAppContainer(mainStack);

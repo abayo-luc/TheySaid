@@ -6,13 +6,16 @@ import { arrayToObject } from "../../src/utils/helpers";
 
 jest.useFakeTimers();
 jest.mock("ScrollView", () => require.requireMock("ScrollViewMock"));
-const [fetchUsers, searchingUser] = Array(2).fill(jest.fn());
-
+const [fetchUsers, searchingUser, navigate] = Array(3).fill(jest.fn());
+const navigation = {
+  navigate
+};
 const props = {
   allUsers: { ...arrayToObject(data, "node_id") },
   isFetching: false,
   fetchUsers,
-  searchingUser
+  searchingUser,
+  navigation
 };
 const component = renderer.create(<Home {...props} />);
 const componentInstances = component.getInstance();
