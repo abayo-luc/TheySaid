@@ -59,7 +59,7 @@ export class Home extends Component {
     this.searchUsersTimeOut = setTimeout(() => {
       const { searchingUser: searchUsers } = this.props;
       searchUsers(text);
-    }, 100);
+    }, 500);
   };
 
   fetchAllUsers = () => {
