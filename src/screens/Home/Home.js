@@ -24,6 +24,8 @@ export class Home extends Component {
     };
   }
 
+  searchUsersTimeOut = 0;
+
   componentDidMount() {
     this.fetchAllUsers();
   }
