@@ -71,7 +71,8 @@ export default EStyleSheet.create({
     width: 32 / 2.5,
     height: 32 / 2.5,
     tintColor: "$textColor",
-    marginTop: 4
+    marginTop: 4,
+    position: "absolute"
   },
   imgBck: {
     width: 32,
