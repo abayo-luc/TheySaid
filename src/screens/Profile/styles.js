@@ -39,7 +39,8 @@ export default EStyleSheet.create({
     tintColor: "$primaryDark"
   },
   namesContainer: {
-    marginVertical: 20
+    marginTop: 10,
+    marginBottom: 20
   },
   cardStyle: {
     flexDirection: "row",

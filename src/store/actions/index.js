@@ -4,16 +4,14 @@ import {
   USER_FETCHED_SUCCESS,
   USER_FETCH_FAILED,
   SEARCHING_USER,
-  SEARCHING_USER_COMPLETE
+  SEARCHING_USER_COMPLETE,
+  PROFILE_FETCHING_SUCCESS,
+  PROFILE_FETCHING_FAILED
 } from "../type";
 
 export const fetchUsers = page => ({
   type: FETCHING_USER,
   page
-});
-
-export const fetchProfile = () => ({
-  type: FETCHING_PROFILES
 });
 
 export const setUsers = users => ({
@@ -33,4 +31,19 @@ export const searchingUser = (username, page = 1) => ({
 export const setSearchResults = users => ({
   type: SEARCHING_USER_COMPLETE,
   payload: users
+});
+
+export const fetchProfile = url => ({
+  type: FETCHING_PROFILES,
+  payload: { url }
+});
+
+export const setProfile = profile => ({
+  type: PROFILE_FETCHING_SUCCESS,
+  payload: profile
+});
+
+export const setProfileError = error => ({
+  type: PROFILE_FETCHING_FAILED,
+  payload: error
 });

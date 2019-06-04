@@ -1,6 +1,9 @@
 /* eslint-disable global-require */
 import React, { Component } from "react";
+<<<<<<< HEAD
 import { View } from "react-native";
+=======
+>>>>>>> [Feature #166258436] populate data into profile component
 import { Provider } from "react-redux";
 import { AppLoading, Asset } from "expo";
 import EStyleSheet from "react-native-extended-stylesheet";
@@ -20,8 +23,13 @@ export default class App extends Component {
     isLoadingComplete: false
   };
 
+<<<<<<< HEAD
   loadAssetsAsync = async () =>
     Promise.all([
+=======
+  loadAssetsAsync = async () => {
+    return Promise.all([
+>>>>>>> [Feature #166258436] populate data into profile component
       Asset.loadAsync([
         require("./assets/icons/fb.png"),
         require("./assets/icons/folder.png"),
@@ -29,6 +37,7 @@ export default class App extends Component {
         require("./assets/icons/google.png"),
         require("./assets/icons/ig.png"),
         require("./assets/icons/star.png"),
+<<<<<<< HEAD
         require("./assets/icons/twitter.png"),
         require("./assets/image.jpg")
       ])
@@ -37,6 +46,15 @@ export default class App extends Component {
   handleLoadingError = () => {
     // eslint-disable-next-line no-alert
     alert("Error occurred");
+=======
+        require("./assets/icons/twitter.png")
+      ])
+    ]);
+  };
+
+  handleLoadingError = error => {
+    console.warn(error);
+>>>>>>> [Feature #166258436] populate data into profile component
   };
 
   handleFinishLoading = () => {
@@ -47,6 +65,7 @@ export default class App extends Component {
     const { isLoadingComplete } = this.state;
     if (!isLoadingComplete) {
       return (
+<<<<<<< HEAD
         <View>
           <AppLoading
             startAsync={this.loadAssetsAsync}
@@ -54,6 +73,13 @@ export default class App extends Component {
             onFinish={this.handleFinishLoading}
           />
         </View>
+=======
+        <AppLoading
+          startAsync={this.loadAssetsAsync}
+          onError={this.handleLoadingError}
+          onFinish={this.handleFinishLoading}
+        />
+>>>>>>> [Feature #166258436] populate data into profile component
       );
     }
     return (
