@@ -72,6 +72,13 @@ export class Home extends Component {
     }
   };
 
+  handleNavigation = url => {
+    const {
+      navigation: { navigate }
+    } = this.props;
+    navigate("Profile", { url });
+  };
+
   renderHeader = () => {
     const { allUsers, isFetching } = this.props;
     const numberOfUsers = Object.keys(allUsers).length;
@@ -101,7 +108,11 @@ export class Home extends Component {
   };
 
   renderItem = ({ item }) => (
-    <UserList avatar={item.avatar_url} username={item.login} />
+    <UserList
+      avatar={item.avatar_url}
+      username={item.login}
+      onNavigate={() => this.handleNavigation(item.url)}
+    />
   );
 
   render() {
@@ -141,6 +152,7 @@ export class Home extends Component {
 
 Home.propTypes = {
   allUsers: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
   isFetching: PropTypes.bool.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   searchingUser: PropTypes.func.isRequired
