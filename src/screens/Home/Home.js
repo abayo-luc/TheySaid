@@ -107,13 +107,6 @@ export class Home extends Component {
     return "";
   };
 
-  handleNavigation = url => {
-    const {
-      navigation: { navigate }
-    } = this.props;
-    navigate("Profile", { url });
-  };
-
   renderItem = ({ item }) => (
     <UserList
       avatar={item.avatar_url}

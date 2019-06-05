@@ -14,5 +14,8 @@ jest.mock("Linking", () => ({
   canOpenURL: jest.fn(),
   getInitialURL: jest.fn()
 }));
+<<<<<<< HEAD
 
 jest.mock("NativeAnimatedHelper");
+=======
+>>>>>>> Fixes houndCI
