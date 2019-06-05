@@ -12,17 +12,14 @@ const headers = {
 };
 export const getUsers = page =>
   fetch(`${GITHUB_API_BASE}${LOCATION_LANGUAGE}&per_page=50&page=${page}`, {
-    headers: {
-      ...headers
-    }
+    headers
   }).then(res => res.json());
 
 export const getUser = (username, page = 1) =>
   fetch(
     `${GITHUB_API_BASE}${username}+${LOCATION_LANGUAGE}&per_page=50&page=${page}`,
-    {
-      headers: {
-        ...headers
-      }
-    }
+    { headers }
   ).then(res => res.json());
+
+export const getProfile = url =>
+  fetch(url, { headers }).then(res => res.json());

@@ -2,6 +2,10 @@ import * as actions from "../../src/store/actions";
 import * as types from "../../src/store/type";
 import { arrayToObject } from "../../src/utils/helpers";
 import data from "../../src/data/data";
+<<<<<<< HEAD
+=======
+import store from "../../src/store";
+>>>>>>> Improves test coverage
 
 describe("Name of the group", () => {
   test("should dispatch FETCHING_USER ", () => {
@@ -13,10 +17,19 @@ describe("Name of the group", () => {
     expect(actions.fetchUsers(page)).toEqual(expectations);
   });
   test("should dispatch FETCHING_PROFILE", () => {
+<<<<<<< HEAD
     const expectations = {
       type: types.FETCHING_PROFILES
     };
     expect(actions.fetchProfile()).toEqual(expectations);
+=======
+    const url = "https://hello.com";
+    const expectations = {
+      type: types.FETCHING_PROFILES,
+      payload: { url }
+    };
+    expect(actions.fetchProfile(url)).toEqual(expectations);
+>>>>>>> Improves test coverage
   });
   test("should dispatch USERS_FETCHED_SUCCESS", () => {
     const payload = arrayToObject(data, "node_id");

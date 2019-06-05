@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 import React, { Component } from "react";
+import { View } from "react-native";
 import { Provider } from "react-redux";
 import { AppLoading, Asset } from "expo";
 import EStyleSheet from "react-native-extended-stylesheet";
@@ -46,11 +47,13 @@ export default class App extends Component {
     const { isLoadingComplete } = this.state;
     if (!isLoadingComplete) {
       return (
-        <AppLoading
-          startAsync={this.loadAssetsAsync}
-          onError={this.handleLoadingError}
-          onFinish={this.handleFinishLoading}
-        />
+        <View>
+          <AppLoading
+            startAsync={this.loadAssetsAsync}
+            onError={this.handleLoadingError}
+            onFinish={this.handleFinishLoading}
+          />
+        </View>
       );
     }
     return (
