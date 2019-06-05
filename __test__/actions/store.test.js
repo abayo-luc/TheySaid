@@ -2,7 +2,6 @@ import * as actions from "../../src/store/actions";
 import * as types from "../../src/store/type";
 import { arrayToObject } from "../../src/utils/helpers";
 import data from "../../src/data/data";
-import store from "../../src/store";
 
 describe("Name of the group", () => {
   test("should dispatch FETCHING_USER ", () => {
