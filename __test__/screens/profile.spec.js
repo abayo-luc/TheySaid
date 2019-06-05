@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "../App";
+import Profile from "../../src/screens/Profile/Profile";
 
-describe("App", () => {
+describe("Profile Screen", () => {
   test("renders correctly", () => {
-    const tree = renderer.create(<App />).toJSON();
+    const tree = renderer.create(<Profile />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
