@@ -5,7 +5,6 @@ import data from "../../src/data/data";
 import { arrayToObject } from "../../src/utils/helpers";
 
 jest.useFakeTimers();
-jest.mock("ScrollView", () => require.requireMock("ScrollViewMock"));
 const [fetchUsers, searchingUser, navigate] = Array(3).fill(jest.fn());
 const navigation = {
   navigate
@@ -46,10 +45,27 @@ describe("Home Screen", () => {
       );
       expect(viewRoots.length).toEqual(2);
     });
+    test("should flatlist should render items", () => {
+      const usersList = findElement("RCTScrollView");
+      expect(usersList[0].props.renderItem({ item: data[0] })).toBeTruthy();
+    });
   });
   describe("Home screen instances", () => {
     const usersList = findElement("RCTScrollView")[0];
+    let instance;
+    beforeEach(() => {
+      instance = componentInstances;
+      jest.spyOn(instance, "handleNavigation");
+      jest.spyOn(instance, "fetchAllUsers");
+      jest.spyOn(instance, "handleSearchInput");
+      jest.spyOn(instance, "refreshData");
+      component.update(<Home {...props} />);
+    });
     afterEach(() => {
+      instance.handleNavigation.mockClear();
+      instance.handleSearchInput.mockClear();
+      instance.fetchAllUsers.mockClear();
+      instance.refreshData.mockClear();
       fetchUsers.mockClear();
       searchingUser.mockClear();
       setTimeout.mockClear();
@@ -74,10 +90,12 @@ describe("Home Screen", () => {
       component.update(<Home {...newProps} />);
       usersList.props.onEndReached();
       usersList.props.onRefresh();
+      expect(instance.refreshData).toBeCalled();
       expect(fetchUsers).not.toHaveBeenCalled();
     });
     test("should fetch user by username", () => {
       const searchInput = findElement("TextInput")[0];
+      componentInstances.searchUsersTimeOut = { id: 12 };
       searchInput.props.onChangeText("luc");
       const { searchQuery } = componentInstances.state;
       expect(searchQuery).toEqual("luc");
@@ -97,7 +115,15 @@ describe("Home Screen", () => {
       expect(searchQuery).toEqual("muh");
       expect(setTimeout).not.toHaveBeenCalled();
       jest.runOnlyPendingTimers();
+      expect(instance.fetchAllUsers).not.toBeCalled();
       expect(searchingUser).not.toBeCalled();
+    });
+    test("should call navigate to profile screen", () => {
+      const { url } = data[0];
+      const listItem = usersList.props.renderItem({ item: data[0] });
+      listItem.props.onNavigate();
+      expect(instance.handleNavigation).toHaveBeenCalledWith(url);
+      expect(navigate).toHaveBeenCalledWith("Profile", { url });
     });
   });
 });

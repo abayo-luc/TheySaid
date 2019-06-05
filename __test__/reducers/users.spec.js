@@ -1,5 +1,9 @@
 import userReducers from "../../src/store/reducers/users";
-import { FETCHING_USER, USER_FETCH_FAILED } from "../../src/store/type";
+import {
+  FETCHING_USER,
+  USER_FETCH_FAILED,
+  SEARCHING_USER
+} from "../../src/store/type";
 
 const INITIAL_STATE = {
   allUsers: {},
@@ -20,6 +24,13 @@ describe("User Reducers", () => {
       ...INITIAL_STATE,
       isFetching: false,
       errors: { message: "Unable to fetch!" }
+    });
+  });
+
+  test("should change isFetching to true", () => {
+    expect(userReducers(INITIAL_STATE, { type: SEARCHING_USER })).toEqual({
+      ...INITIAL_STATE,
+      isFetching: true
     });
   });
 });

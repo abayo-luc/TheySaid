@@ -26,7 +26,7 @@ export function* searchUsers({ payload }) {
   }
 }
 
-function* fetchProfile({ payload }) {
+export function* fetchProfile({ payload }) {
   const { url } = payload;
   try {
     const response = yield call(getProfile, url);
