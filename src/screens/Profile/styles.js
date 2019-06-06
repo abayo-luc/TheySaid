@@ -22,7 +22,8 @@ export default EStyleSheet.create({
   socials: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between"
+    alignItems: "center",
+    justifyContent: "center"
   },
   social: {
     width: 38,

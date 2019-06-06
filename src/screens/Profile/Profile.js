@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -7,20 +8,18 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Linking
+  Linking,
+  Share
 } from "react-native";
 import styles from "./styles";
 import user from "../../data/user";
 import CardContainer from "../../components/Cards/CardContainer";
 import Loading from "../../components/ActivityIndicators/Loading";
 // /icons
-import fb from "../../assets/icons/fb.png";
-import ig from "../../assets/icons/ig.png";
-import google from "../../assets/icons/google.png";
-import twitter from "../../assets/icons/twitter.png";
 import folder from "../../assets/icons/folder.png";
 import star from "../../assets/icons/star.png";
 import gitHub from "../../assets/icons/github.png";
+import share from "../../assets/icons/share.png";
 // action creators
 import { fetchProfile } from "../../store/actions";
 
@@ -34,6 +33,10 @@ export class Profile extends Component {
       color: "#fff",
       fontWeight: "800"
     }
+  };
+
+  state = {
+    shareOpen: false
   };
 
   componentWillMount() {
@@ -53,6 +56,33 @@ export class Profile extends Component {
       // eslint-disable-next-line no-alert
       alert("Error occurred");
     }
+  };
+
+  handleShare = async () => {
+    const { shareOpen } = this.state;
+    if (shareOpen) {
+      return;
+    }
+    const {
+      profile: { login, html_url: htmlUrl }
+    } = this.props;
+    this.setState({
+      shareOpen: true
+    });
+    Share.share({
+      message: `Check out this awesome developer @${login}, ${htmlUrl}`
+    })
+      .then(() => {
+        this.setState({
+          shareOpen: false
+        });
+      })
+      .catch(() => {
+        this.setState({
+          shareOpen: false
+        });
+        alert("Action failed");
+      });
   };
 
   renderMetrics = profile => (
@@ -128,10 +158,15 @@ export class Profile extends Component {
             </Text>
           </View>
           <View style={styles.socials}>
-            {[fb, twitter, google, ig].map((icon, index) => (
-              <View style={styles.social} key={Number(index)}>
+            {[share].map((icon, index) => (
+              <TouchableOpacity
+                style={styles.social}
+                key={Number(index)}
+                onPress={this.handleShare}
+                testID="share-btn"
+              >
                 <Image source={icon} resizeMode="contain" style={styles.icon} />
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
           {this.renderMetrics(profile)}
