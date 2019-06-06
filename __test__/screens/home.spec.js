@@ -27,7 +27,7 @@ describe("Home Screen", () => {
     test("should render one list", () => {
       const usersList = findElement("RCTScrollView");
       expect(usersList.length).toBe(1);
-      expect(usersList[0].props.onEndReachedThreshold).toEqual(0);
+      expect(usersList[0].props.onEndReachedThreshold).toEqual(0.5);
     });
     test("should render test input", () => {
       const searchInput = findElement("TextInput");
