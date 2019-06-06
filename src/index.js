@@ -21,7 +21,16 @@ export default class App extends Component {
   };
 
   loadAssetsAsync = async () =>
-    Promise.all([Asset.loadAsync([require("./assets/icons/share.png")])]);
+    Promise.all([
+      Asset.loadAsync([
+        require("./assets/icons/share.png"),
+        require("./assets/icons/search.png"),
+        require("./assets/icons/back.png"),
+        require("./assets/icons/pin.png"),
+        require("./assets/icons/forward.png"),
+        require("./assets/icons/backward.png")
+      ])
+    ]);
 
   handleLoadingError = () => {
     // eslint-disable-next-line no-alert

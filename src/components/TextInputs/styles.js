@@ -6,18 +6,17 @@ export default EStyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "flex-start",
+    // justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "$textColor",
     marginHorizontal: 10,
-    marginVertical: 23,
     borderRadius: 5,
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    height: 38
   },
   input: {
     marginLeft: 10,
     fontSize: 14,
-    height: "80%",
     width: "90%"
   }
 });

@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 import CardContainer from "../Cards/CardContainer";
 import styles from "./styles";
+import CustomIcon from "../Icons/CustomIcons";
 
 const UserList = ({ username, email, avatar, onNavigate }) => (
   <View style={styles.userListContainer}>
@@ -23,11 +23,7 @@ const UserList = ({ username, email, avatar, onNavigate }) => (
         </View>
       </View>
       <TouchableOpacity style={styles.circle} onPress={onNavigate}>
-        <Ionicons
-          name="ios-arrow-round-forward"
-          size={32}
-          color={styles.$themeColor}
-        />
+        <CustomIcon name="forward" size={22} color={styles.$themeColor} />
       </TouchableOpacity>
     </CardContainer>
   </View>

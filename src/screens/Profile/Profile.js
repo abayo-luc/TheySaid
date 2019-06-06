@@ -19,12 +19,17 @@ import Loading from "../../components/ActivityIndicators/Loading";
 import folder from "../../assets/icons/folder.png";
 import star from "../../assets/icons/star.png";
 import gitHub from "../../assets/icons/github.png";
-import share from "../../assets/icons/share.png";
 // action creators
 import { fetchProfile } from "../../store/actions";
+import CustomIcon from "../../components/Icons/CustomIcons";
 
 export class Profile extends Component {
   static navigationOptions = {
+    headerBackTitleStyle: {
+      color: "#fff",
+      fontSize: 18,
+      fontWeight: "600"
+    },
     headerStyle: {
       backgroundColor: "#1e2354",
       borderColor: "#1e2354"
@@ -158,14 +163,14 @@ export class Profile extends Component {
             </Text>
           </View>
           <View style={styles.socials}>
-            {[share].map((icon, index) => (
+            {["share"].map((icon, index) => (
               <TouchableOpacity
                 style={styles.social}
                 key={Number(index)}
                 onPress={this.handleShare}
                 testID="share-btn"
               >
-                <Image source={icon} resizeMode="contain" style={styles.icon} />
+                <CustomIcon name={icon} style={styles.icon} size={22} />
               </TouchableOpacity>
             ))}
           </View>

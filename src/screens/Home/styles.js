@@ -10,6 +10,8 @@ export default EStyleSheet.create({
     width: "100%",
     flexDirection: "row",
     backgroundColor: "$softDark",
+    alignItems: "center",
+    justifyContent: "center",
     elevation: 2
   },
   content: {
