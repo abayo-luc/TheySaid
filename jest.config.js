@@ -1,5 +1,6 @@
 module.exports = {
   preset: "jest-expo",
+  setupFiles: ["<rootDir>/__test__/jest.setup.js"],
   testMatch: ["**/?(*.)+(spec|test).js"],
   collectCoverage: true,
   coverageReporters: ["json", "lcov", "text", "clover"],

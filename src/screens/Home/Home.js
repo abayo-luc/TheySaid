@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Text, View, FlatList, Platform } from "react-native";
+import { Text, View, FlatList } from "react-native";
 import Container from "../../components/container/container";
 import StatusBar from "../../components/StatusBar/StatusBar";
 import styles from "./styles";
@@ -12,7 +12,7 @@ import CustomIcon from "../../components/Icons/CustomIcons";
 import Loading from "../../components/ActivityIndicators/Loading";
 import { fetchUsers, searchingUser } from "../../store/actions";
 
-const END_THRESHOLD = Platform.OS === "ios" ? 0 : 1;
+const END_THRESHOLD = 0.5;
 
 export class Home extends Component {
   constructor(props) {
@@ -50,7 +50,7 @@ export class Home extends Component {
       searchQuery: text
     });
 
-    if (isFetching) {
+    if (isFetching && text.trim()) {
       return;
     }
     if (this.searchUsersTimeOut) {
@@ -59,7 +59,7 @@ export class Home extends Component {
     this.searchUsersTimeOut = setTimeout(() => {
       const { searchingUser: searchUsers } = this.props;
       searchUsers(text);
-    }, 500);
+    }, 1000);
   };
 
   fetchAllUsers = () => {
@@ -68,6 +68,13 @@ export class Home extends Component {
     if (!isFetching && !searchQuery) {
       getUsers(page);
     }
+  };
+
+  handleNavigation = url => {
+    const {
+      navigation: { navigate }
+    } = this.props;
+    navigate("Profile", { url });
   };
 
   renderHeader = () => {
@@ -99,7 +106,11 @@ export class Home extends Component {
   };
 
   renderItem = ({ item }) => (
-    <UserList avatar={item.avatar_url} username={item.login} />
+    <UserList
+      avatar={item.avatar_url}
+      username={item.login}
+      onNavigate={() => this.handleNavigation(item.url)}
+    />
   );
 
   render() {
@@ -139,6 +150,7 @@ export class Home extends Component {
 
 Home.propTypes = {
   allUsers: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({}).isRequired,
   isFetching: PropTypes.bool.isRequired,
   fetchUsers: PropTypes.func.isRequired,
   searchingUser: PropTypes.func.isRequired

@@ -10,3 +10,5 @@ coverage
 .env
 **/envirnoment.js
 **/keys.json
+**.orig.png
+/src/**.orig.png

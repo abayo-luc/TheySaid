@@ -1,4 +1,5 @@
 import EStyleSheet from "react-native-extended-stylesheet";
+import { responsiveHeight } from "../../utils/dimensions";
 
 export default EStyleSheet.create({
   $iconColor: "$textColor",
@@ -6,18 +7,17 @@ export default EStyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "flex-start",
     alignItems: "center",
     backgroundColor: "$textColor",
     marginHorizontal: 10,
-    marginVertical: 23,
     borderRadius: 5,
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    height: responsiveHeight("6%")
   },
   input: {
     marginLeft: 10,
     fontSize: 14,
-    height: "80%",
-    width: "90%"
+    width: "90%",
+    height: responsiveHeight("4%")
   }
 });

@@ -6,7 +6,7 @@ import CustomIcon from "../Icons/CustomIcons";
 
 const InputIcon = ({ onChangeText, value }) => (
   <View style={styles.container}>
-    <CustomIcon name="search" size={32} color={styles.$themeColor} />
+    <CustomIcon name="search" size={28} color={styles.$themeColor} />
     <TextInput
       style={styles.input}
       placeholder="Search..."
@@ -27,4 +27,5 @@ InputIcon.defaultProps = {
   onChangeText: () => null,
   value: ""
 };
+
 export default InputIcon;

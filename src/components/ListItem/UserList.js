@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import CardContainer from "../Cards/CardContainer";
 import styles from "./styles";
+import CustomIcon from "../Icons/CustomIcons";
 
-const UserList = ({ username, email, avatar }) => (
+const UserList = ({ username, email, avatar, onNavigate }) => (
   <View style={styles.userListContainer}>
     <CardContainer style={styles.row}>
       <View style={styles.row}>
@@ -22,13 +22,9 @@ const UserList = ({ username, email, avatar }) => (
           <Text style={styles.textStyle}>{email || ""}</Text>
         </View>
       </View>
-      <View style={styles.circle}>
-        <Ionicons
-          name="ios-arrow-round-forward"
-          size={32}
-          color={styles.$themeColor}
-        />
-      </View>
+      <TouchableOpacity style={styles.circle} onPress={onNavigate}>
+        <CustomIcon name="forward" size={22} color={styles.$themeColor} />
+      </TouchableOpacity>
     </CardContainer>
   </View>
 );
@@ -36,11 +32,11 @@ const UserList = ({ username, email, avatar }) => (
 UserList.propTypes = {
   avatar: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func.isRequired,
   email: PropTypes.string
 };
 
 UserList.defaultProps = {
   email: ""
 };
-
 export default UserList;
