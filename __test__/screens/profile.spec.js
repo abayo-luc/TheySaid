@@ -3,7 +3,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { Share } from "react-native";
 import { Profile } from "../../src/screens/Profile/Profile";
-import user from "../../src/data/user";
+import { user } from "../../src/data/data";
 
 const [fetchProfile] = Array(1).fill(jest.fn());
 const props = {

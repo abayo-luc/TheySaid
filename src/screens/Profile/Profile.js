@@ -12,7 +12,6 @@ import {
   Share
 } from "react-native";
 import styles from "./styles";
-import user from "../../data/user";
 import CardContainer from "../../components/Cards/CardContainer";
 import Loading from "../../components/ActivityIndicators/Loading";
 // /icons
@@ -55,8 +54,9 @@ export class Profile extends Component {
   }
 
   openProfileInBrowser = () => {
+    const { profile } = this.props;
     try {
-      Linking.openURL(user.html_url);
+      Linking.openURL(profile.html_url);
     } catch (error) {
       // eslint-disable-next-line no-alert
       alert("Error occurred");

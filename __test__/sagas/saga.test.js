@@ -2,7 +2,7 @@ import { expectSaga } from "redux-saga-test-plan";
 import { fetchUsers, searchUsers, fetchProfile } from "../../src/store/sagas";
 import userReducers from "../../src/store/reducers/users";
 import profileReducers from "../../src/store/reducers/profile";
-import data from "../../src/data/data";
+import { users as data } from "../../src/data/data";
 import { arrayToObject } from "../../src/utils/helpers";
 
 const users = arrayToObject(data, "node_id");

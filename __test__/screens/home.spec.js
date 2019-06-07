@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import { Home } from "../../src/screens/Home/Home";
-import data from "../../src/data/data";
+import { users as data } from "../../src/data/data";
 import { arrayToObject } from "../../src/utils/helpers";
 
 jest.useFakeTimers();

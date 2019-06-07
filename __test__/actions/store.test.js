@@ -1,7 +1,7 @@
 import * as actions from "../../src/store/actions";
 import * as types from "../../src/store/type";
 import { arrayToObject } from "../../src/utils/helpers";
-import data from "../../src/data/data";
+import { users } from "../../src/data/data";
 
 describe("Name of the group", () => {
   test("should dispatch FETCHING_USER ", () => {
@@ -21,7 +21,7 @@ describe("Name of the group", () => {
     expect(actions.fetchProfile(url)).toEqual(expectations);
   });
   test("should dispatch USERS_FETCHED_SUCCESS", () => {
-    const payload = arrayToObject(data, "node_id");
+    const payload = arrayToObject(users, "node_id");
     const expectations = {
       type: types.USER_FETCHED_SUCCESS,
       payload
