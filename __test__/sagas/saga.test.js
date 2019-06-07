@@ -17,6 +17,9 @@ const mockFetchPromise = Promise.resolve({
 const mockRejectedPromise = Promise.reject({
   error: "Invalid token"
 });
+
+const spyOnFetch = mockedRes =>
+  jest.spyOn(global, "fetch").mockImplementation(() => mockedRes);
 const INITIAL_STATE_USER = {
   allUsers: {},
   isFetching: false
@@ -31,59 +34,42 @@ const PROFILE_INITIAL_STATE = {
   profile: {},
   errors: {}
 };
+const USERS_ACTIONS = [
+  { data: STATE_WITH_USERS, mock: mockFetchPromise },
+  { data: INITIAL_STATE_USER, mock: mockRejectedPromise }
+];
+
 describe("All Sagas", () => {
   describe("Fetch users", () => {
     const payload = { page: 1 };
-    test("should fetch users", () => {
-      jest.spyOn(global, "fetch").mockImplementation(() => mockFetchPromise);
-      return expectSaga(fetchUsers, payload)
-        .withReducer(userReducers)
-        .hasFinalState({
-          ...STATE_WITH_USERS
-        })
-        .run();
-    });
-    test("should fetch users", () => {
-      jest.spyOn(global, "fetch").mockImplementation(() => mockRejectedPromise);
-      return expectSaga(fetchUsers, payload)
-        .withReducer(userReducers)
-        .hasFinalState({
-          ...INITIAL_STATE_USER
-        })
-        .run();
-    });
+    USERS_ACTIONS.forEach(item =>
+      test("should dispatch FETCHING_USER", () => {
+        spyOnFetch(item.mock);
+        return expectSaga(fetchUsers, payload)
+          .withReducer(userReducers)
+          .hasFinalState(item.data)
+          .run();
+      })
+    );
   });
   describe("Search by username", () => {
     const payload = { page: 1, username: "moyne" };
-    test("should search user by username", () => {
-      jest.spyOn(global, "fetch").mockImplementation(() => mockFetchPromise);
-      return expectSaga(searchUsers, {
-        payload
-      })
-        .withReducer(userReducers)
-        .hasFinalState({
-          ...STATE_WITH_USERS
+    USERS_ACTIONS.forEach(item =>
+      test("should search user by username SUCCESS and FAILED", () => {
+        spyOnFetch(item.mock);
+        return expectSaga(searchUsers, {
+          payload
         })
-        .run();
-    });
-    test("should search user by username", () => {
-      jest.spyOn(global, "fetch").mockImplementation(() => mockRejectedPromise);
-      return expectSaga(searchUsers, {
-        payload
+          .withReducer(userReducers)
+          .hasFinalState(item.data)
+          .run();
       })
-        .withReducer(userReducers)
-        .hasFinalState({
-          ...INITIAL_STATE_USER
-        })
-        .run();
-    });
+    );
   });
   describe("Fetch User Profile", () => {
     test("should fetch profile", () => {
       const payload = { url: data[0].url };
-      jest
-        .spyOn(global, "fetch")
-        .mockImplementation(() => mockFetchProfileSuccess);
+      spyOnFetch(mockFetchProfileSuccess);
       return expectSaga(fetchProfile, { payload })
         .withReducer(profileReducers)
         .hasFinalState({
@@ -95,7 +81,7 @@ describe("All Sagas", () => {
     });
     test("should reject fetch profile", () => {
       const payload = { url: data[0].url };
-      jest.spyOn(global, "fetch").mockImplementation(() => mockRejectedPromise);
+      spyOnFetch(mockRejectedPromise);
       return expectSaga(fetchProfile, { payload })
         .withReducer(profileReducers)
         .hasFinalState({
