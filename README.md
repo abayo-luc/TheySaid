@@ -3,9 +3,14 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/maintainability)](https://codeclimate.com/github/abayo-luc/CodeLab/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/test_coverage)](https://codeclimate.com/github/abayo-luc/CodeLab/test_coverage)
 
-### TheySaid mobile app
+### QuoteLab mobile app
 
-TheySaid is an Android and IOS app build with React Native which display the list of Popular saying and Quotes.
+QuoteLab is an Android and IOS app build with React Native which display the list of Popular saying and Quotes.
+
+### Screens
+
+![](img/home-dark.png)
+![](img/profile-dark.png)
 
 ### Steps to build the app:
 

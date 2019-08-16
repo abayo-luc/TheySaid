@@ -1,9 +1,9 @@
 {
 	"expo": {
-		"name": "TheySaid",
-		"slug": "TheySaid",
+		"name": "QuoteLab",
+		"slug": "QuoteLab",
 		"privacy": "public",
-		"sdkVersion": "34.0.0",
+		"sdkVersion": "32.0.0",
 		"platforms": ["ios", "android"],
 		"version": "1.0.0",
 		"orientation": "portrait",
@@ -19,10 +19,10 @@
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
 			"supportsTablet": true,
-			"bundleIdentifier": "com.andela.codelab"
+			"bundleIdentifier": "com.andela.quotelab"
 		},
 		"android": {
-			"package": "com.andela.codelab"
+			"package": "com.andela.quotelab"
 		}
 	}
 }
