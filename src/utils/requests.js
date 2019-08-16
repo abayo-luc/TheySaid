@@ -1,25 +1,9 @@
-let API_KEY;
-if (process.env.NODE_ENV !== "test") {
-  // eslint-disable-next-line global-require
-  ({ API_KEY } = require("../config/keys.json"));
-}
+import config from "../../config";
 
-const GITHUB_API_BASE = `https://api.github.com/search/users?q=`;
-const LOCATION_LANGUAGE = `location:lagos+language:java`;
-const headers = {
-  "Content-Type": "application/json",
-  Authorization: `token ${API_KEY}`
-};
-export const getUsers = page =>
-  fetch(`${GITHUB_API_BASE}${LOCATION_LANGUAGE}&per_page=50&page=${page}`, {
-    headers
-  }).then(res => res.json());
+const { API_KEY, BASE_URL, ENGINE_ID } = config;
 
-export const getUser = (username, page = 1) =>
-  fetch(
-    `${GITHUB_API_BASE}${username}+${LOCATION_LANGUAGE}&per_page=50&page=${page}`,
-    { headers }
-  ).then(res => res.json());
-
-export const getProfile = url =>
-  fetch(url, { headers }).then(res => res.json());
+export const getQuotes = () =>
+  fetch(`${BASE_URL}key=${API_KEY}&cx=${ENGINE_ID}&q=failure`).then(res =>
+    res.json()
+  );
+export const getSingleQuote = () => null;

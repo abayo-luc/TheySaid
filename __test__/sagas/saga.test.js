@@ -1,5 +1,5 @@
 import { expectSaga } from "redux-saga-test-plan";
-import { fetchUsers, searchUsers, fetchProfile } from "../../src/store/sagas";
+import { fetchQuotes, searchUsers, fetchProfile } from "../../src/store/sagas";
 import userReducers from "../../src/store/reducers/users";
 import profileReducers from "../../src/store/reducers/profile";
 import { users as data } from "../../src/data/data";
@@ -43,9 +43,9 @@ describe("All Sagas", () => {
   describe("Fetch users", () => {
     const payload = { page: 1 };
     USERS_ACTIONS.forEach(item =>
-      test("should dispatch FETCHING_USER", () => {
+      test("should dispatch FETCHING_QUOTES", () => {
         spyOnFetch(item.mock);
-        return expectSaga(fetchUsers, payload)
+        return expectSaga(fetchQuotes, payload)
           .withReducer(userReducers)
           .hasFinalState(item.data)
           .run();

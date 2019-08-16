@@ -8,10 +8,9 @@ export default EStyleSheet.create({
     alignItems: "center",
     paddingVertical: 10,
     paddingHorizontal: 5,
-    borderRadius: 3
+    borderRadius: 10
   },
   userListContainer: {
-    height: 70,
     marginBottom: 15
   },
   avatar: {
@@ -23,8 +22,9 @@ export default EStyleSheet.create({
     marginLeft: 10
   },
   textStyle: {
-    color: "$textColor",
-    fontSize: 14
+    color: "$primaryDark",
+    fontSize: 14,
+    fontStyle: "italic"
   },
   circle: {
     backgroundColor: "$textColor",

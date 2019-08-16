@@ -10,9 +10,8 @@ import CardContainer from "../../components/Cards/CardContainer";
 import UserList from "../../components/ListItem/UserList";
 import CustomIcon from "../../components/Icons/CustomIcons";
 import Loading from "../../components/ActivityIndicators/Loading";
-import { fetchUsers, searchingUser } from "../../store/actions";
-
-const END_THRESHOLD = 0.5;
+import { fetchQuotes } from "../../store/actions";
+import Categories from "../../components/Categories";
 
 export class Home extends Component {
   constructor(props) {
@@ -24,57 +23,24 @@ export class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.fetchAllUsers();
   }
 
-  keyExtractor = (item, index) => `${item.id}${index}`;
+  keyExtractor = (item, index) => `${item.cacheId}${index}`;
 
-  loadMore = () => {
-    const { isFetching } = this.props;
-    if (!isFetching) {
-      this.setState(state => ({
-        page: state.page + 1
-      }));
-      this.fetchAllUsers();
-    }
-  };
-
-  refreshData = () => {
-    this.fetchAllUsers(1);
-  };
+  loadMore = () => {};
 
   handleSearchInput = text => {
-    const { isFetching } = this.props;
-    this.setState({
-      searchQuery: text
-    });
-
-    if (isFetching && text.trim()) {
-      return;
-    }
-    if (this.searchUsersTimeOut) {
-      clearTimeout(this.searchUsersTimeOut);
-    }
-    this.searchUsersTimeOut = setTimeout(() => {
-      const { searchingUser: searchUsers } = this.props;
-      searchUsers(text);
-    }, 1000);
+    this.setState({ searchQuery: text });
   };
 
   fetchAllUsers = () => {
     const { page, searchQuery } = this.state;
-    const { fetchUsers: getUsers, isFetching } = this.props;
+    const { fetchQuotes: getUsers, isFetching } = this.props;
     if (!isFetching && !searchQuery) {
       getUsers(page);
     }
-  };
-
-  handleNavigation = url => {
-    const {
-      navigation: { navigate }
-    } = this.props;
-    navigate("Profile", { url });
   };
 
   renderHeader = () => {
@@ -105,13 +71,17 @@ export class Home extends Component {
     return "";
   };
 
-  renderItem = ({ item }) => (
-    <UserList
-      avatar={item.avatar_url}
-      username={item.login}
-      onNavigate={() => this.handleNavigation(item.url)}
-    />
-  );
+  renderItem = ({ item }) => {
+    const { cse_image: images, metatags } = item.pagemap;
+    const data = metatags[0];
+    return (
+      <UserList
+        avatar={images[0] && images[0].src}
+        description={data["twitter:description"]}
+        onNavigate={() => this.handleNavigation(item.url)}
+      />
+    );
+  };
 
   render() {
     const { allUsers, isFetching } = this.props;
@@ -120,27 +90,34 @@ export class Home extends Component {
     return (
       <Container>
         <StatusBar barStyle="light-content" />
-        <View style={styles.header}>
-          <InputIcon
-            onChangeText={this.handleSearchInput}
-            value={searchQuery}
-          />
-        </View>
-        <View style={styles.content}>
-          <View style={{ flex: 1 }}>
-            <FlatList
-              data={users}
-              extraData={users}
-              renderItem={this.renderItem}
-              ListHeaderComponent={this.renderHeader}
-              keyExtractor={this.keyExtractor}
-              style={styles.listStyle}
-              onRefresh={this.refreshData}
-              refreshing={isFetching}
-              onEndReachedThreshold={END_THRESHOLD}
-              onEndReached={this.loadMore}
-              ListFooterComponent={isFetching ? <Loading size="large" /> : null}
+        <View style={styles.headerContainer}>
+          <View style={styles.header}>
+            <InputIcon
+              onChangeText={this.handleSearchInput}
+              value={searchQuery}
             />
+          </View>
+        </View>
+        <View style={styles.contentContainer}>
+          <View style={styles.content}>
+            <View style={styles.categoryContainer}>
+              <Categories />
+            </View>
+
+            <View style={{ flex: 1 }}>
+              <FlatList
+                data={users}
+                extraData={users}
+                renderItem={this.renderItem}
+                keyExtractor={this.keyExtractor}
+                style={styles.listStyle}
+                onRefresh={this.refreshData}
+                refreshing={isFetching}
+                ListFooterComponent={
+                  isFetching ? <Loading size="large" /> : null
+                }
+              />
+            </View>
           </View>
         </View>
       </Container>
@@ -152,8 +129,7 @@ Home.propTypes = {
   allUsers: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   isFetching: PropTypes.bool.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
-  searchingUser: PropTypes.func.isRequired
+  fetchQuotes: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({ users }) => ({
@@ -162,5 +138,5 @@ const mapStateToProps = ({ users }) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchUsers, searchingUser }
+  { fetchQuotes }
 )(Home);

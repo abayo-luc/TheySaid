@@ -4,13 +4,13 @@ import { arrayToObject } from "../../src/utils/helpers";
 import { users } from "../../src/data/data";
 
 describe("Name of the group", () => {
-  test("should dispatch FETCHING_USER ", () => {
+  test("should dispatch FETCHING_QUOTES ", () => {
     const page = 1;
     const expectations = {
-      type: types.FETCHING_USER,
+      type: types.FETCHING_QUOTES,
       page
     };
-    expect(actions.fetchUsers(page)).toEqual(expectations);
+    expect(actions.fetchQuotes(page)).toEqual(expectations);
   });
   test("should dispatch FETCHING_PROFILE", () => {
     const url = "https://hello.com";
@@ -23,14 +23,14 @@ describe("Name of the group", () => {
   test("should dispatch USERS_FETCHED_SUCCESS", () => {
     const payload = arrayToObject(users, "node_id");
     const expectations = {
-      type: types.USER_FETCHED_SUCCESS,
+      type: types.QUOTES_FETCHED_SUCCESS,
       payload
     };
-    expect(actions.setUsers(payload)).toEqual(expectations);
+    expect(actions.setQuotes(payload)).toEqual(expectations);
   });
   test("should dispatch USERS_FETCHED_FAILED", () => {
     const expectations = {
-      type: types.USER_FETCH_FAILED
+      type: types.QUOTES_FETCH_FAILED
     };
     expect(actions.setFetchError()).toEqual(expectations);
   });

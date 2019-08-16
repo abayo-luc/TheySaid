@@ -5,14 +5,14 @@ import { users as data } from "../../src/data/data";
 import { arrayToObject } from "../../src/utils/helpers";
 
 jest.useFakeTimers();
-const [fetchUsers, searchingUser, navigate] = Array(3).fill(jest.fn());
+const [fetchQuotes, searchingUser, navigate] = Array(3).fill(jest.fn());
 const navigation = {
   navigate
 };
 const props = {
   allUsers: { ...arrayToObject(data, "node_id") },
   isFetching: false,
-  fetchUsers,
+  fetchQuotes,
   searchingUser,
   navigation
 };
@@ -66,24 +66,24 @@ describe("Home Screen", () => {
       instance.handleSearchInput.mockClear();
       instance.fetchAllUsers.mockClear();
       instance.refreshData.mockClear();
-      fetchUsers.mockClear();
+      fetchQuotes.mockClear();
       searchingUser.mockClear();
       setTimeout.mockClear();
       component.update(<Home {...props} />);
     });
     test("should call fetch user on component mount", () => {
-      expect(fetchUsers).toBeCalledWith(1);
+      expect(fetchQuotes).toBeCalledWith(1);
     });
     test("should re-fetch on refresh event", () => {
       usersList.props.onRefresh();
-      expect(fetchUsers).toHaveBeenCalledTimes(1);
-      expect(fetchUsers).toBeCalledWith(1);
+      expect(fetchQuotes).toHaveBeenCalledTimes(1);
+      expect(fetchQuotes).toBeCalledWith(1);
     });
     test("should load more data on reach end", () => {
       const { page } = componentInstances.state;
       usersList.props.onEndReached();
-      expect(fetchUsers).toHaveBeenCalledTimes(1);
-      expect(fetchUsers).toBeCalledWith(page + 1);
+      expect(fetchQuotes).toHaveBeenCalledTimes(1);
+      expect(fetchQuotes).toBeCalledWith(page + 1);
     });
     test("should should not fetch more data if isFetching true", () => {
       const newProps = { ...props, isFetching: true };
@@ -91,7 +91,7 @@ describe("Home Screen", () => {
       usersList.props.onEndReached();
       usersList.props.onRefresh();
       expect(instance.refreshData).toBeCalled();
-      expect(fetchUsers).not.toHaveBeenCalled();
+      expect(fetchQuotes).not.toHaveBeenCalled();
     });
     test("should fetch user by username", () => {
       const searchInput = findElement("TextInput")[0];

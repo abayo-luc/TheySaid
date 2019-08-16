@@ -5,21 +5,33 @@ const SCREEN_WIDTH = Dimensions.get("window").width;
 export default EStyleSheet.create({
   $themeColor: "$primaryDark",
   $iconTextColor: "$textColor",
+  headerContainer: {
+    flex: 0.15,
+    width: "100%",
+    backgroundColor: "$primaryWhite"
+  },
   header: {
-    flex: 0.13,
+    flex: 1,
     width: "100%",
     flexDirection: "row",
-    backgroundColor: "$softDark",
+    backgroundColor: "$primaryDark",
     alignItems: "center",
     justifyContent: "center",
-    elevation: 2
+    elevation: 2,
+    borderBottomRightRadius: 25
+  },
+  contentContainer: {
+    flex: 0.85,
+    width: "100%",
+    backgroundColor: "$primaryDark"
   },
   content: {
     width: "100%",
-    flex: 0.87,
-    backgroundColor: "$primaryDark",
-    paddingHorizontal: 10,
-    paddingTop: 5
+    flex: 1,
+    backgroundColor: "$primaryWhite",
+    paddingHorizontal: 15,
+    paddingTop: 10,
+    borderTopLeftRadius: 25
   },
   listStyle: {
     paddingTop: 10,
@@ -46,5 +58,8 @@ export default EStyleSheet.create({
     color: "$textColor",
     fontWeight: "600",
     fontSize: 18
+  },
+  categoryContainer: {
+    height: 25
   }
 });

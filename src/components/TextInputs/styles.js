@@ -12,7 +12,8 @@ export default EStyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 5,
     paddingHorizontal: 5,
-    height: responsiveHeight("6%")
+    height: responsiveHeight("6%"),
+    width: "70%"
   },
   input: {
     marginLeft: 10,
