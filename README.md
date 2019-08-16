@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/abayo-luc/CodeLab/tree/develop.svg?style=svg)](https://circleci.com/gh/abayo-luc/CodeLab/tree/develop)
+[![CircleCI](https://circleci.com/gh/abayo-luc/QuoteLab.svg?style=svg)](https://circleci.com/gh/abayo-luc/QuoteLab)
 [![Coverage Status](https://coveralls.io/repos/github/abayo-luc/CodeLab/badge.svg?branch=develop)](https://coveralls.io/github/abayo-luc/CodeLab?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/maintainability)](https://codeclimate.com/github/abayo-luc/CodeLab/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/test_coverage)](https://codeclimate.com/github/abayo-luc/CodeLab/test_coverage)
