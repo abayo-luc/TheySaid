@@ -4,9 +4,9 @@ import * as actions from "../actions";
 import { getQuotes } from "../../utils/requests";
 import { arrayToObject } from "../../utils/helpers";
 
-export function* fetchQuotes({ page }) {
+export function* fetchQuotes({ query }) {
   try {
-    const response = yield call(getQuotes, page);
+    const response = yield call(getQuotes, query);
     const { items } = response;
     const users = yield arrayToObject(items, "cacheId");
     yield put(actions.setQuotes(users));

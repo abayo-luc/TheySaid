@@ -1,5 +1,6 @@
 import EStyleSheet from "react-native-extended-stylesheet";
 import { Dimensions } from "react-native";
+import { responsiveWidth, responsiveHeight } from "../../utils/dimensions";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 export default EStyleSheet.create({
@@ -18,7 +19,7 @@ export default EStyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     elevation: 2,
-    borderBottomRightRadius: 25
+    borderBottomRightRadius: responsiveWidth(8)
   },
   contentContainer: {
     flex: 0.85,
@@ -29,16 +30,20 @@ export default EStyleSheet.create({
     width: "100%",
     flex: 1,
     backgroundColor: "$primaryWhite",
-    paddingHorizontal: 15,
-    paddingTop: 10,
-    borderTopLeftRadius: 25
+    paddingHorizontal: responsiveWidth(5),
+    paddingTop: responsiveWidth(3),
+    borderTopLeftRadius: responsiveWidth(8)
+  },
+  listContainer: {
+    flex: 1,
+    justifyContent: "center"
   },
   listStyle: {
-    paddingTop: 10,
+    paddingTop: responsiveWidth(3),
     flex: 1
   },
   listHeader: {
-    marginTop: 10,
+    marginTop: responsiveWidth(3),
     height: SCREEN_WIDTH * 0.5
   },
   locationText: {
@@ -52,7 +57,7 @@ export default EStyleSheet.create({
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: 20
+    marginVertical: responsiveHeight(10)
   },
   titleText: {
     color: "$textColor",
@@ -60,6 +65,6 @@ export default EStyleSheet.create({
     fontSize: 18
   },
   categoryContainer: {
-    height: 25
+    height: responsiveHeight(5)
   }
 });

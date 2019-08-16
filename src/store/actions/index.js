@@ -6,9 +6,9 @@ import {
   SEARCHING_QUOTES
 } from "../type";
 
-export const fetchQuotes = page => ({
+export const fetchQuotes = query => ({
   type: FETCHING_QUOTES,
-  page
+  query
 });
 
 export const setQuotes = quotes => ({

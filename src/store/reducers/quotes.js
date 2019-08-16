@@ -7,7 +7,7 @@ import {
 } from "../type";
 
 const INITIAL_STATE = {
-  allUsers: {},
+  results: {},
   isFetching: false
 };
 
@@ -22,8 +22,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isFetching: false,
-        allUsers: {
-          ...state.allUsers,
+        results: {
           ...payload
         }
       };
@@ -42,7 +41,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       return {
         ...state,
         isFetching: false,
-        allUsers: {
+        results: {
           ...payload
         }
       };
