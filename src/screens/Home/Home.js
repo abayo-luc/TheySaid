@@ -1,55 +1,39 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Text, View, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
+import { isEmpty } from "lodash";
 import Container from "../../components/container/container";
 import StatusBar from "../../components/StatusBar/StatusBar";
 import styles from "./styles";
 import InputIcon from "../../components/TextInputs/InputIcon";
-import CardContainer from "../../components/Cards/CardContainer";
-import UserList from "../../components/ListItem/UserList";
-import CustomIcon from "../../components/Icons/CustomIcons";
+import QuotesList from "../../components/ListItem";
 import Loading from "../../components/ActivityIndicators/Loading";
-import { fetchUsers, searchingUser } from "../../store/actions";
-
-const END_THRESHOLD = 0.5;
+import { fetchQuotes } from "../../store/actions";
+import Categories from "../../components/Categories";
+import categories from "../../components/Categories/categories";
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.searchUsersTimeOut = 0;
     this.state = {
-      page: 1,
-      searchQuery: ""
+      query: "",
+      categoryIndex: -1
     };
   }
 
-  componentDidMount() {
-    this.fetchAllUsers();
+  async componentDidMount() {
+    this.fetchData();
   }
 
-  keyExtractor = (item, index) => `${item.id}${index}`;
+  keyExtractor = (item, index) => `${item.cacheId}${index}`;
 
-  loadMore = () => {
-    const { isFetching } = this.props;
-    if (!isFetching) {
-      this.setState(state => ({
-        page: state.page + 1
-      }));
-      this.fetchAllUsers();
-    }
-  };
-
-  refreshData = () => {
-    this.fetchAllUsers(1);
-  };
+  loadMore = () => {};
 
   handleSearchInput = text => {
+    this.setState({ query: text });
     const { isFetching } = this.props;
-    this.setState({
-      searchQuery: text
-    });
-
     if (isFetching && text.trim()) {
       return;
     }
@@ -57,90 +41,76 @@ export class Home extends Component {
       clearTimeout(this.searchUsersTimeOut);
     }
     this.searchUsersTimeOut = setTimeout(() => {
-      const { searchingUser: searchUsers } = this.props;
-      searchUsers(text);
+      this.fetchData(text);
     }, 1000);
   };
 
-  fetchAllUsers = () => {
-    const { page, searchQuery } = this.state;
-    const { fetchUsers: getUsers, isFetching } = this.props;
-    if (!isFetching && !searchQuery) {
-      getUsers(page);
+  handleCategoryPress = (category, index) => {
+    this.setState({ categoryIndex: parseFloat(index), query: "" });
+    this.fetchData(category);
+  };
+
+  fetchData = query => {
+    const { fetchQuotes: queryData } = this.props;
+    let queryText = query;
+    if (isEmpty(queryText)) {
+      queryText = categories[Math.floor(Math.random() * categories.length)];
     }
+    queryData(queryText);
   };
 
-  handleNavigation = url => {
-    const {
-      navigation: { navigate }
-    } = this.props;
-    navigate("Profile", { url });
-  };
-
-  renderHeader = () => {
-    const { allUsers, isFetching } = this.props;
-    const numberOfUsers = Object.keys(allUsers).length;
+  renderItem = ({ item }) => {
+    const { cse_image: images, metatags } = item.pagemap;
+    const data = metatags[0];
+    if (!data["twitter:description"]) {
+      return null;
+    }
     return (
-      <View style={styles.listHeader}>
-        <CardContainer>
-          <CustomIcon name="pin" size={36} color={styles.$iconTextColor} />
-          <Text style={styles.locationText}>Java developers in Lagos</Text>
-        </CardContainer>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText} testID="number-of-devs">
-            {this.renderHeaderText(numberOfUsers, isFetching)}
-          </Text>
-        </View>
-      </View>
+      <QuotesList
+        avatar={images[0] && images[0].src}
+        description={data["twitter:description"]}
+        onNavigate={() => this.handleNavigation(item.url)}
+      />
     );
   };
 
-  renderHeaderText = (number, isFetching) => {
-    if (number !== 0 && !isFetching) {
-      return `Developers: ${number}`;
-    }
-    if (number === 0 && !isFetching) {
-      return `No developer found!`;
-    }
-    return "";
-  };
-
-  renderItem = ({ item }) => (
-    <UserList
-      avatar={item.avatar_url}
-      username={item.login}
-      onNavigate={() => this.handleNavigation(item.url)}
-    />
-  );
-
   render() {
-    const { allUsers, isFetching } = this.props;
-    const { searchQuery } = this.state;
-    const users = Object.values(allUsers);
+    const { results, isFetching } = this.props;
+    const { query, categoryIndex } = this.state;
+    const users = Object.values(results);
     return (
       <Container>
         <StatusBar barStyle="light-content" />
-        <View style={styles.header}>
-          <InputIcon
-            onChangeText={this.handleSearchInput}
-            value={searchQuery}
-          />
+        <View style={styles.headerContainer}>
+          <View style={styles.header}>
+            <InputIcon onChangeText={this.handleSearchInput} value={query} />
+          </View>
         </View>
-        <View style={styles.content}>
-          <View style={{ flex: 1 }}>
-            <FlatList
-              data={users}
-              extraData={users}
-              renderItem={this.renderItem}
-              ListHeaderComponent={this.renderHeader}
-              keyExtractor={this.keyExtractor}
-              style={styles.listStyle}
-              onRefresh={this.refreshData}
-              refreshing={isFetching}
-              onEndReachedThreshold={END_THRESHOLD}
-              onEndReached={this.loadMore}
-              ListFooterComponent={isFetching ? <Loading size="large" /> : null}
-            />
+        <View style={styles.contentContainer}>
+          <View style={styles.content}>
+            <View style={styles.categoryContainer}>
+              <Categories
+                onPress={this.handleCategoryPress}
+                categoryIndex={categoryIndex}
+              />
+            </View>
+
+            <View style={styles.listContainer}>
+              {isFetching ? (
+                <Loading size="large" />
+              ) : (
+                <FlatList
+                  data={users}
+                  extraData={users}
+                  renderItem={this.renderItem}
+                  keyExtractor={this.keyExtractor}
+                  style={styles.listStyle}
+                  showsVerticalScrollIndicator={false}
+                  removeClippedSubViews
+                  overScrollMode="auto"
+                />
+              )}
+            </View>
           </View>
         </View>
       </Container>
@@ -149,18 +119,17 @@ export class Home extends Component {
 }
 
 Home.propTypes = {
-  allUsers: PropTypes.shape({}).isRequired,
+  results: PropTypes.shape({}).isRequired,
   navigation: PropTypes.shape({}).isRequired,
   isFetching: PropTypes.bool.isRequired,
-  fetchUsers: PropTypes.func.isRequired,
-  searchingUser: PropTypes.func.isRequired
+  fetchQuotes: PropTypes.func.isRequired
 };
 
-const mapStateToProps = ({ users }) => ({
-  ...users
+const mapStateToProps = ({ quotes }) => ({
+  ...quotes
 });
 
 export default connect(
   mapStateToProps,
-  { fetchUsers, searchingUser }
+  { fetchQuotes }
 )(Home);

@@ -18,6 +18,12 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: 'Set up env variables'
+          command: |
+            echo 'API_KEY="some-api-key"' >> .env
+            echo 'BASE_URL="https://www.example.me?"' >> .env
+            echo 'ENGINE_ID="some-engine-id"' >> .env
+      - run:
           name: 'Run Jest and Collect Coverage Reports'
           command: |
             ./cc-test-reporter before-build

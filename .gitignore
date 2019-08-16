@@ -12,3 +12,4 @@ coverage
 **/keys.json
 **.orig.png
 /src/**.orig.png
+.expo-shared

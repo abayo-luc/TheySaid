@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "CodeLab",
-    "slug": "CodeLab",
+    "name": "QuoteLab",
+    "slug": "QuoteLab",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": ["ios", "android"],
@@ -18,7 +18,11 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.andela.quotelab"
+    },
+    "android": {
+      "package": "com.andela.quotelab"
     }
   }
 }
