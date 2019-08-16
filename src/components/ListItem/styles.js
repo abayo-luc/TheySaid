@@ -1,4 +1,5 @@
 import EStyleSheet from "react-native-extended-stylesheet";
+import { responsiveHeight, responsiveWidth } from "../../utils/dimensions";
 
 export default EStyleSheet.create({
   $themeColor: "$primaryDark",
@@ -6,18 +7,14 @@ export default EStyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: 10,
-    paddingHorizontal: 5,
-    borderRadius: 10
+    paddingVertical: responsiveHeight(1),
+    paddingHorizontal: responsiveWidth(0.5),
+    borderRadius: responsiveWidth(3)
   },
   userListContainer: {
-    marginBottom: 15
+    marginBottom: responsiveWidth(3)
   },
-  avatar: {
-    width: 48,
-    height: 48,
-    borderRadius: 24
-  },
+
   userInfo: {
     marginLeft: 10
   },
@@ -26,12 +23,9 @@ export default EStyleSheet.create({
     fontSize: 14,
     fontStyle: "italic"
   },
-  circle: {
-    backgroundColor: "$textColor",
-    height: 48,
-    width: 48,
-    borderRadius: 24,
-    justifyContent: "center",
-    alignItems: "center"
+  authorStyle: {
+    color: "$primaryDark",
+    fontSize: 12,
+    fontStyle: "italic"
   }
 });
