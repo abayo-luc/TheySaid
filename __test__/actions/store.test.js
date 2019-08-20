@@ -4,33 +4,25 @@ import { arrayToObject } from "../../src/utils/helpers";
 import { users } from "../../src/data/data";
 
 describe("Name of the group", () => {
-  test("should dispatch FETCHING_USER ", () => {
-    const page = 1;
+  test("should dispatch FETCHING_QUOTES ", () => {
+    const query = "Luc";
     const expectations = {
-      type: types.FETCHING_USER,
-      page
+      type: types.FETCHING_QUOTES,
+      query
     };
-    expect(actions.fetchUsers(page)).toEqual(expectations);
+    expect(actions.fetchQuotes(query)).toEqual(expectations);
   });
-  test("should dispatch FETCHING_PROFILE", () => {
-    const url = "https://hello.com";
+  test("should dispatch QUOTES_FETCHED_SUCCESS", () => {
+    const payload = arrayToObject(users, "cacheId");
     const expectations = {
-      type: types.FETCHING_PROFILES,
-      payload: { url }
-    };
-    expect(actions.fetchProfile(url)).toEqual(expectations);
-  });
-  test("should dispatch USERS_FETCHED_SUCCESS", () => {
-    const payload = arrayToObject(users, "node_id");
-    const expectations = {
-      type: types.USER_FETCHED_SUCCESS,
+      type: types.QUOTES_FETCHED_SUCCESS,
       payload
     };
-    expect(actions.setUsers(payload)).toEqual(expectations);
+    expect(actions.setQuotes(payload)).toEqual(expectations);
   });
-  test("should dispatch USERS_FETCHED_FAILED", () => {
+  test("should dispatch QUOTES_FETCHED_FAILED", () => {
     const expectations = {
-      type: types.USER_FETCH_FAILED
+      type: types.QUOTES_FETCH_FAILED
     };
     expect(actions.setFetchError()).toEqual(expectations);
   });
