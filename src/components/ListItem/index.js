@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableWithoutFeedback } from "react-native";
 import CardContainer from "../Cards/CardContainer";
 import styles from "./styles";
 
 const UserList = ({ description, author, onLongPress }) => (
-  <TouchableOpacity onLongPress={onLongPress}>
+  <TouchableWithoutFeedback onLongPress={onLongPress}>
     <View style={styles.userListContainer}>
       <CardContainer style={styles.row}>
         <View style={styles.row}>
@@ -17,7 +17,7 @@ const UserList = ({ description, author, onLongPress }) => (
         <View />
       </CardContainer>
     </View>
-  </TouchableOpacity>
+  </TouchableWithoutFeedback>
 );
 
 UserList.propTypes = {
