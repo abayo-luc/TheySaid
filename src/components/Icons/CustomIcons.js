@@ -3,11 +3,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Image, StyleSheet } from "react-native";
 import Icons from "./Icons";
+import { responsiveWidth, responsiveHeight } from "../../utils/dimensions";
 
 const styles = StyleSheet.create({
   icon: {
-    width: 32,
-    height: 32
+    width: responsiveWidth(10),
+    height: responsiveHeight(10)
   }
 });
 const CustomIcon = ({ name, size, color, style }) => {

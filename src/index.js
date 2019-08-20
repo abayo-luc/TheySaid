@@ -25,10 +25,7 @@ export default class App extends Component {
       Asset.loadAsync([
         require("./assets/icons/share.png"),
         require("./assets/icons/search.png"),
-        require("./assets/icons/back.png"),
-        require("./assets/icons/pin.png"),
-        require("./assets/icons/forward.png"),
-        require("./assets/icons/backward.png")
+        require("./assets/icons/pin.png")
       ])
     ]);
 

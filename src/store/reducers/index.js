@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
-import users from "./users";
-import profile from "./profile";
+import quotes from "./quotes";
 
 export default combineReducers({
-  users,
-  profile
+  quotes
 });
