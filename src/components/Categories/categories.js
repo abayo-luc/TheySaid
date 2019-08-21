@@ -21,5 +21,5 @@ export default [
   "Graduation",
   "Great",
   "Happiness",
-  "Health"
+  "Health",
 ];

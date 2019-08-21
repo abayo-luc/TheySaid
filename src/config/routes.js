@@ -1,14 +1,29 @@
 /* eslint-disable import/no-named-as-default */
-import { createStackNavigator, createAppContainer } from "react-navigation";
-import Home from "../screens/Home/Home";
+import {
+  createStackNavigator,
+  createAppContainer,
+  createDrawerNavigator,
+} from "react-navigation";
+import Home from "../screens/Home";
+import DrawerContent from "../screens/Drawer";
+import Favorites from "../screens/Favorites";
 
-const mainStack = createStackNavigator({
+const stackNavigator = createStackNavigator({
   Home: {
     screen: Home,
     navigationOptions: {
-      header: () => null
-    }
-  }
+      header: () => null,
+    },
+  },
 });
+const drawerNavigator = createDrawerNavigator(
+  {
+    Home: stackNavigator,
+    Favorites,
+  },
+  {
+    contentComponent: DrawerContent,
+  },
+);
 
-export default createAppContainer(mainStack);
+export default createAppContainer(drawerNavigator);

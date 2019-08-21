@@ -2,12 +2,12 @@ import quoteReducers from "../../src/store/reducers/quotes";
 import {
   FETCHING_QUOTES,
   QUOTES_FETCH_FAILED,
-  SEARCHING_QUOTES
+  SEARCHING_QUOTES,
 } from "../../src/store/type";
 
 const INITIAL_STATE = {
   results: {},
-  isFetching: false
+  isFetching: false,
 };
 describe("User Reducers", () => {
   test("should return initial state", () => {
@@ -16,7 +16,7 @@ describe("User Reducers", () => {
   test("should change isFetching to true", () => {
     expect(quoteReducers(INITIAL_STATE, { type: FETCHING_QUOTES })).toEqual({
       ...INITIAL_STATE,
-      isFetching: true
+      isFetching: true,
     });
   });
   test("should respond to user fetch failed", () => {
@@ -24,15 +24,15 @@ describe("User Reducers", () => {
       {
         ...INITIAL_STATE,
         isFetching: false,
-        errors: { message: "Unable to fetch!" }
-      }
+        errors: { message: "Unable to fetch!" },
+      },
     );
   });
 
   test("should change isFetching to true", () => {
     expect(quoteReducers(INITIAL_STATE, { type: SEARCHING_QUOTES })).toEqual({
       ...INITIAL_STATE,
-      isFetching: true
+      isFetching: true,
     });
   });
 });

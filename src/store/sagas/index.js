@@ -11,7 +11,7 @@ export function* fetchQuotes({ query }) {
     const users = yield arrayToObject(data, "cacheId");
     yield put(actions.setQuotes(users));
   } catch (error) {
-    yield put(actions.setFetchError);
+    yield put(actions.setFetchError());
   }
 }
 

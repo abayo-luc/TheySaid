@@ -3,24 +3,27 @@ import { responsiveHeight, responsiveWidth } from "../../utils/dimensions";
 
 export default EStyleSheet.create({
   $themeColor: "$primaryDark",
+  main: {
+    borderRadius: responsiveWidth(3),
+    paddingVertical: responsiveHeight(0.5),
+  },
   row: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingVertical: responsiveHeight(1),
-    paddingHorizontal: responsiveWidth(0.5),
-    borderRadius: responsiveWidth(3)
+    padding: responsiveWidth(1),
   },
   userListContainer: {
-    marginBottom: responsiveWidth(3)
-  },
-
-  userInfo: {
-    marginLeft: 10
+    marginBottom: responsiveWidth(4),
   },
   textStyle: {
     color: "$primaryDark",
     fontSize: 14,
-    fontStyle: "italic"
-  }
+    fontStyle: "italic",
+  },
+  footerContainer: {
+    flexDirection: "row",
+    width: "90%",
+    justifyContent: "space-between",
+  },
 });
