@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { View, FlatList } from "react-native";
+import { View, FlatList, Clipboard } from "react-native";
 import { isEmpty } from "lodash";
 import Container from "../../components/container/container";
 import StatusBar from "../../components/StatusBar/StatusBar";
@@ -11,7 +11,8 @@ import QuotesList from "../../components/ListItem";
 import Loading from "../../components/ActivityIndicators/Loading";
 import { fetchQuotes } from "../../store/actions";
 import Categories from "../../components/Categories";
-import categories from "../../components/Categories/categories";
+import Welcome from "../../components/Welcome";
+import Toast from "../../components/Toast";
 
 export class Home extends Component {
   constructor(props) {
@@ -19,30 +20,15 @@ export class Home extends Component {
     this.searchUsersTimeOut = 0;
     this.state = {
       query: "",
-      categoryIndex: -1
+      categoryIndex: -1,
+      toastVisible: false
     };
-  }
-
-  async componentDidMount() {
-    this.fetchData();
   }
 
   keyExtractor = (item, index) => `${item.cacheId}${index}`;
 
-  loadMore = () => {};
-
   handleSearchInput = text => {
-    this.setState({ query: text });
-    const { isFetching } = this.props;
-    if (isFetching && text.trim()) {
-      return;
-    }
-    if (this.searchUsersTimeOut) {
-      clearTimeout(this.searchUsersTimeOut);
-    }
-    this.searchUsersTimeOut = setTimeout(() => {
-      this.fetchData(text);
-    }, 1000);
+    this.setState({ query: text, categoryIndex: -1 });
   };
 
   handleCategoryPress = (category, index) => {
@@ -50,69 +36,117 @@ export class Home extends Component {
     this.fetchData(category);
   };
 
+  handleSubmit = () => {
+    const { query } = this.state;
+    const text = query.trim();
+    if (text) {
+      this.fetchData(text);
+    }
+  };
+
   fetchData = query => {
     const { fetchQuotes: queryData } = this.props;
-    let queryText = query;
-    if (isEmpty(queryText)) {
-      queryText = categories[Math.floor(Math.random() * categories.length)];
-    }
+    const queryText = query;
     queryData(queryText);
   };
 
+  handleCopy = async item => {
+    await Clipboard.setString(`"${item.description}" - ${item.author}`);
+    this.setState(
+      {
+        toastVisible: true
+      },
+      () => {
+        this.hideToast();
+      }
+    );
+  };
+
+  hideToast = () => {
+    this.setState({
+      toastVisible: false
+    });
+  };
+
   renderItem = ({ item }) => {
-    const { cse_image: images, metatags } = item.pagemap;
-    const data = metatags[0];
-    if (!data["twitter:description"]) {
-      return null;
-    }
     return (
       <QuotesList
-        avatar={images[0] && images[0].src}
-        description={data["twitter:description"]}
+        onLongPress={() => this.handleCopy(item)}
+        author={item.author}
+        description={item.description}
         onNavigate={() => this.handleNavigation(item.url)}
+      />
+    );
+  };
+
+  renderHeader = () => {
+    const { query } = this.state;
+    return (
+      <View style={styles.headerContainer}>
+        <View style={styles.header}>
+          <InputIcon
+            onChangeText={this.handleSearchInput}
+            value={query}
+            returnKeyType="search"
+            onSubmitEditing={this.handleSubmit}
+          />
+        </View>
+      </View>
+    );
+  };
+
+  renderCategories = () => {
+    const { categoryIndex } = this.state;
+    return (
+      <View style={styles.categoryContainer}>
+        <Categories
+          onPress={this.handleCategoryPress}
+          categoryIndex={categoryIndex}
+        />
+      </View>
+    );
+  };
+
+  renderResults = () => {
+    const { results, isFetching } = this.props;
+    const quotes = Object.values(results);
+    return isFetching ? (
+      <Loading size="large" />
+    ) : (
+      <FlatList
+        data={quotes}
+        extraData={quotes}
+        renderItem={this.renderItem}
+        keyExtractor={this.keyExtractor}
+        style={styles.listStyle}
+        showsVerticalScrollIndicator={false}
+        removeClippedSubViews
+        overScrollMode="auto"
+        ListFooterComponent={() => <View style={styles.footerStyle} />}
       />
     );
   };
 
   render() {
     const { results, isFetching } = this.props;
-    const { query, categoryIndex } = this.state;
-    const users = Object.values(results);
+    const { toastVisible } = this.state;
     return (
       <Container>
         <StatusBar barStyle="light-content" />
-        <View style={styles.headerContainer}>
-          <View style={styles.header}>
-            <InputIcon onChangeText={this.handleSearchInput} value={query} />
-          </View>
-        </View>
+        {this.renderHeader()}
         <View style={styles.contentContainer}>
           <View style={styles.content}>
-            <View style={styles.categoryContainer}>
-              <Categories
-                onPress={this.handleCategoryPress}
-                categoryIndex={categoryIndex}
-              />
-            </View>
-
+            {this.renderCategories()}
             <View style={styles.listContainer}>
-              {isFetching ? (
-                <Loading size="large" />
+              {isEmpty(results) && !isFetching ? (
+                <Welcome />
               ) : (
-                <FlatList
-                  data={users}
-                  extraData={users}
-                  renderItem={this.renderItem}
-                  keyExtractor={this.keyExtractor}
-                  style={styles.listStyle}
-                  showsVerticalScrollIndicator={false}
-                  removeClippedSubViews
-                  overScrollMode="auto"
-                />
+                this.renderResults()
               )}
             </View>
           </View>
         </View>
+        <Toast visible={toastVisible} message="Example" />
       </Container>
     );
   }

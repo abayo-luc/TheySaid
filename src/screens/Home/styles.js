@@ -66,5 +66,8 @@ export default EStyleSheet.create({
   },
   categoryContainer: {
     height: responsiveHeight(5)
+  },
+  footerStyle: {
+    paddingBottom: responsiveHeight(3)
   }
 });

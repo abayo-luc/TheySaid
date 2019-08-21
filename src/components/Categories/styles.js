@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
+import EStyleSheet from "react-native-extended-stylesheet";
 
-export default StyleSheet.create({
+export default EStyleSheet.create({
   itemStyle: {
     paddingVertical: 2,
     paddingHorizontal: 5,
@@ -8,7 +8,8 @@ export default StyleSheet.create({
     justifyContent: "center"
   },
   item: {
-    fontStyle: "italic"
+    fontStyle: "italic",
+    color: "$primaryDark"
   },
   selectedItem: {
     backgroundColor: "rgba(43, 46, 74, 0.4)",
