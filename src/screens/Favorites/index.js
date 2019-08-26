@@ -20,6 +20,7 @@ export class Favorites extends Component {
       toastVisible: false,
       isSelected: false,
       selectedId: "",
+      message: "",
     };
   }
 
@@ -38,6 +39,7 @@ export class Favorites extends Component {
     this.setState(
       {
         toastVisible: true,
+        message: "Copied to clipboard",
       },
       () => {
         this.hideToast();
@@ -112,8 +114,11 @@ export class Favorites extends Component {
   };
 
   render() {
-    const { quotes } = this.props;
-    const { toastVisible } = this.state;
+    const {
+      quotes,
+      navigation: { navigate },
+    } = this.props;
+    const { toastVisible, message } = this.state;
     return (
       <Container>
         <StatusBar barStyle="light-content" />
@@ -121,18 +126,27 @@ export class Favorites extends Component {
         <View style={styles.contentContainer}>
           <View style={styles.content}>
             <View style={styles.listContainer}>
-              {isEmpty(quotes) ? <Welcome /> : this.renderResults()}
+              {isEmpty(quotes) ? (
+                <Welcome
+                  title="OohOoh"
+                  message="You haven't added any quote!"
+                  navigate={() => navigate("Home")}
+                  nextScreen="home"
+                />
+              ) : (
+                this.renderResults()
+              )}
             </View>
           </View>
         </View>
-        <Toast visible={toastVisible} message="Copied" />
+        <Toast visible={toastVisible} message={message} />
       </Container>
     );
   }
 }
 
 Favorites.propTypes = {
-  navigation: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({ navigate: PropTypes.func }).isRequired,
   pinQuote: PropTypes.func.isRequired,
   quotes: PropTypes.shape({}).isRequired,
 };
