@@ -13,12 +13,10 @@ export default EStyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 5,
     height: responsiveHeight(6),
-    width: "70%"
   },
   input: {
-    marginLeft: responsiveWidth(2),
     fontSize: 14,
-    width: "90%",
-    height: responsiveHeight(4)
-  }
+    width: "100%",
+    height: responsiveHeight(4),
+  },
 });

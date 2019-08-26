@@ -10,9 +10,9 @@ const CardContainer = ({ children, style }) => {
 };
 CardContainer.propTypes = {
   children: PropTypes.array.isRequired,
-  style: PropTypes.shape({})
+  style: PropTypes.shape({}),
 };
 CardContainer.defaultProps = {
-  style: {}
+  style: {},
 };
 export default CardContainer;

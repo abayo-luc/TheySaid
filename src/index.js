@@ -2,32 +2,26 @@
 import React, { Component } from "react";
 import { View } from "react-native";
 import { Provider } from "react-redux";
-import { AppLoading, Asset } from "expo";
+import { AppLoading } from "expo";
 import EStyleSheet from "react-native-extended-stylesheet";
+import { PersistGate } from "redux-persist/integration/react";
 import Navigator from "./config/routes";
-import store from "./store";
+import Store from "./store";
 
 EStyleSheet.build({
   $primaryWhite: "#fff",
   $primaryDark: "#0F1336",
   $softDark: "rgba(43,46,74, 0.4)",
   $textColor: "#FFF",
-  $iconColor: "#fff"
+  $iconColor: "#fff",
 });
 
 export default class App extends Component {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
   };
 
-  loadAssetsAsync = async () =>
-    Promise.all([
-      Asset.loadAsync([
-        require("./assets/icons/share.png"),
-        require("./assets/icons/search.png"),
-        require("./assets/icons/pin.png")
-      ])
-    ]);
+  loadAssetsAsync = async () => null;
 
   handleLoadingError = () => {
     // eslint-disable-next-line no-alert
@@ -39,6 +33,7 @@ export default class App extends Component {
   };
 
   render() {
+    const { store, persistor } = Store();
     const { isLoadingComplete } = this.state;
     if (!isLoadingComplete) {
       return (
@@ -53,7 +48,9 @@ export default class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Navigator />
+        <PersistGate persistor={persistor} loading={null}>
+          <Navigator />
+        </PersistGate>
       </Provider>
     );
   }

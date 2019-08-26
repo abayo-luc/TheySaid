@@ -8,6 +8,6 @@ const Container = ({ children }) => (
 );
 
 Container.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 export default Container;

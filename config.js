@@ -1,3 +1,3 @@
-import { API_KEY, BASE_URL, ENGINE_ID } from "react-native-dotenv";
+import { BASE_URL } from "react-native-dotenv";
 
-export default { API_KEY, BASE_URL, ENGINE_ID };
+export default { BASE_URL };

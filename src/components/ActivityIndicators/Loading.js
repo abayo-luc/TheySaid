@@ -10,11 +10,11 @@ const Loading = ({ size }) => (
 );
 
 Loading.propTypes = {
-  size: PropTypes.string
+  size: PropTypes.string,
 };
 
 Loading.defaultProps = {
-  size: "large"
+  size: "large",
 };
 
 export default Loading;

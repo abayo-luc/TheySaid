@@ -1,5 +1,7 @@
 import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import {
+  View, Image, Text, StyleSheet,
+} from "react-native";
 import Emoji from "../../assets/emoji.png";
 import { responsiveHeight } from "../../utils/dimensions";
 
@@ -7,20 +9,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   img: {
-    height: responsiveHeight(8)
+    height: responsiveHeight(8),
   },
   message: {
     alignContent: "center",
     alignItems: "center",
-    marginVertical: responsiveHeight(3)
+    marginVertical: responsiveHeight(3),
   },
   text: {
     fontWeight: "bold",
-    color: "#000"
-  }
+    color: "#000",
+  },
 });
 const index = () => (
   <View style={styles.container}>

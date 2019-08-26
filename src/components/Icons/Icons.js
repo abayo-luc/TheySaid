@@ -1,15 +1,17 @@
 import pin from "../../assets/icons/pin.png";
 import search from "../../assets/icons/search.png";
-import back from "../../assets/icons/back.png";
 import share from "../../assets/icons/share.png";
-import forward from "../../assets/icons/forward.png";
-import backward from "../../assets/icons/backward.png";
+import pinned from "../../assets/icons/pinned.png";
+import copy from "../../assets/icons/copy.png";
+import logo from "../../assets/icons/logo.png";
+import home from "../../assets/icons/home.png";
 
 export default {
   pin,
   search,
-  back,
   share,
-  forward,
-  backward
+  pinned,
+  copy,
+  logo,
+  home,
 };

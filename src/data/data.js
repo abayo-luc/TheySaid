@@ -8,7 +8,7 @@ export default {
       description:
         "Let no one think that flexibility and a predisposition to compromise is a sign of weakness or a sell-out.",
       createdAt: "2019-08-19T22:03:54.340Z",
-      updatedAt: "2019-08-19T22:03:54.340Z"
-    }
-  ]
+      updatedAt: "2019-08-19T22:03:54.340Z",
+    },
+  ],
 };
