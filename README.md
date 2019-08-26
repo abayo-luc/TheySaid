@@ -1,11 +1,11 @@
-[![CircleCI](https://circleci.com/gh/abayo-luc/QuoteLab.svg?style=svg)](https://circleci.com/gh/abayo-luc/QuoteLab)
+[![CircleCI](https://circleci.com/gh/abayo-luc/TheySaid.svg?style=svg)](https://circleci.com/gh/abayo-luc/TheySaid)
 [![Coverage Status](https://coveralls.io/repos/github/abayo-luc/CodeLab/badge.svg?branch=develop)](https://coveralls.io/github/abayo-luc/CodeLab?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/maintainability)](https://codeclimate.com/github/abayo-luc/CodeLab/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/25d871eba90318d57af0/test_coverage)](https://codeclimate.com/github/abayo-luc/CodeLab/test_coverage)
 
-### QuoteLab mobile app
+### TheySaid mobile app
 
-QuoteLab is an Android and IOS app build with React Native which display the list of Popular saying and Quotes.
+TheySaid is an Android and IOS app build with React Native which display the list of Popular saying and Quotes.
 
 ### Steps to build the app:
 
