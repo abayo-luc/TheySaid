@@ -6,6 +6,6 @@ export default EStyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "$primaryDark"
-  }
+    backgroundColor: "$primaryDark",
+  },
 });

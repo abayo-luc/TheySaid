@@ -4,6 +4,6 @@ export default EStyleSheet.create({
   $themeColor: "$primaryDark",
   loadingContainer: {
     marginTop: 5,
-    marginBottom: 20
-  }
+    marginBottom: 20,
+  },
 });

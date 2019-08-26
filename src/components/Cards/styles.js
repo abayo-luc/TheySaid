@@ -7,6 +7,6 @@ export default EStyleSheet.create({
     borderColor: "$softDark",
     borderWidth: StyleSheet.hairlineWidth * 2,
     justifyContent: "center",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });

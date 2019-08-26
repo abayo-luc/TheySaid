@@ -10,9 +10,9 @@ const statusBar = ({ bgColor, ...props }) => (
 );
 
 statusBar.propTypes = {
-  bgColor: PropTypes.string
+  bgColor: PropTypes.string,
 };
 statusBar.defaultProps = {
-  bgColor: "rgba(0,0,0,0)"
+  bgColor: "rgba(0,0,0,0)",
 };
 export default statusBar;

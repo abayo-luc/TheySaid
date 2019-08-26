@@ -24,7 +24,7 @@ const CategoriesList = ({ onPress, categoryIndex }) => (
 
 CategoriesList.propTypes = {
   onPress: PropTypes.func.isRequired,
-  categoryIndex: PropTypes.number.isRequired
+  categoryIndex: PropTypes.number.isRequired,
 };
 
 export default CategoriesList;

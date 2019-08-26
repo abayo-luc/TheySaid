@@ -4,9 +4,11 @@ import { View, TextInput } from "react-native";
 import styles from "./styles";
 import CustomIcon from "../Icons/CustomIcons";
 
-const InputIcon = ({ onChangeText, value, returnKeyType, onSubmitEditing }) => (
+const InputIcon = ({
+  onChangeText, value, returnKeyType, onSubmitEditing,
+}) => (
   <View style={styles.container}>
-    <CustomIcon name="search" size={28} color={styles.$themeColor} />
+    <CustomIcon name="search" size={6} color={styles.$themeColor} />
     <TextInput
       style={styles.input}
       placeholder="Search..."
@@ -24,14 +26,14 @@ InputIcon.propTypes = {
   onChangeText: PropTypes.func,
   value: PropTypes.string,
   returnKeyType: PropTypes.string,
-  onSubmitEditing: PropTypes.func
+  onSubmitEditing: PropTypes.func,
 };
 
 InputIcon.defaultProps = {
   onChangeText: () => null,
   onSubmitEditing: () => null,
   value: "",
-  returnKeyType: ""
+  returnKeyType: "",
 };
 
 export default InputIcon;

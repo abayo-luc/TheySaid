@@ -5,14 +5,14 @@ export default EStyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 5,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   item: {
     fontStyle: "italic",
-    color: "$primaryDark"
+    color: "$primaryDark",
   },
   selectedItem: {
     backgroundColor: "rgba(43, 46, 74, 0.4)",
-    borderRadius: 10
-  }
+    borderRadius: 10,
+  },
 });

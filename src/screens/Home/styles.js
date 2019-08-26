@@ -9,7 +9,7 @@ export default EStyleSheet.create({
   headerContainer: {
     flex: 0.15,
     width: "100%",
-    backgroundColor: "$primaryWhite"
+    backgroundColor: "$primaryWhite",
   },
   header: {
     flex: 1,
@@ -19,12 +19,12 @@ export default EStyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     elevation: 2,
-    borderBottomRightRadius: responsiveWidth(8)
+    borderBottomRightRadius: responsiveWidth(8),
   },
   contentContainer: {
     flex: 0.85,
     width: "100%",
-    backgroundColor: "$primaryDark"
+    backgroundColor: "$primaryDark",
   },
   content: {
     width: "100%",
@@ -32,42 +32,51 @@ export default EStyleSheet.create({
     backgroundColor: "$primaryWhite",
     paddingHorizontal: responsiveWidth(5),
     paddingTop: responsiveWidth(3),
-    borderTopLeftRadius: responsiveWidth(8)
+    borderTopLeftRadius: responsiveWidth(8),
   },
   listContainer: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   listStyle: {
     paddingTop: responsiveWidth(3),
-    flex: 1
+    flex: 1,
   },
   listHeader: {
     marginTop: responsiveWidth(3),
-    height: SCREEN_WIDTH * 0.5
+    height: SCREEN_WIDTH * 0.5,
   },
   locationText: {
     fontSize: 18,
     fontWeight: "800",
-    color: "$textColor"
+    color: "$textColor",
   },
   textStyle: {
-    color: "$textColor"
+    color: "$textColor",
   },
   titleContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: responsiveHeight(10)
+    marginVertical: responsiveHeight(10),
   },
   titleText: {
     color: "$textColor",
     fontWeight: "600",
-    fontSize: 18
+    fontSize: 18,
   },
   categoryContainer: {
-    height: responsiveHeight(5)
+    height: responsiveHeight(5),
   },
   footerStyle: {
-    paddingBottom: responsiveHeight(3)
-  }
+    paddingBottom: responsiveHeight(3),
+  },
+  menuStyles: {
+    padding: responsiveWidth(1),
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: "800",
+    fontStyle: "italic",
+    color: "#fff",
+  },
 });
