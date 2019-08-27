@@ -42,8 +42,6 @@ export class Home extends Component {
   handleConnectivity = (status) => {
     this.setState({
       isConnected: status,
-      toastVisible: status,
-      message: status ? "Online" : "Offline",
     });
   };
 
