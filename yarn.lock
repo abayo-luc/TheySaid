@@ -1074,10 +1074,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/netinfo@^4.1.5":
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-4.1.5.tgz#4bb44842db6a1a18f00a0f061b0e3dcc638f67dd"
-  integrity sha512-lagdZr9UiVAccNXYfTEj+aUcPCx9ykbMe9puffeIyF3JsRuMmlu3BjHYx1klUHX7wNRmFNC8qVP0puxUt1sZ0A==
+"@react-native-community/netinfo@~3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-3.2.1.tgz#cd073b81a4b978f7f55f1a960a0b56c462813e02"
+  integrity sha512-A2qANOnlRDVe+8kMbKMwy3/0bOlOA2+y8DyWg2Rv2KHICIfin+oxixbG0ewAOLQdLkSEyyumZXRmIVl7VI/KJg==
 
 "@react-navigation/core@~3.5.0":
   version "3.5.0"

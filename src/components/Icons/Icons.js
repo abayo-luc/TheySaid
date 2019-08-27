@@ -5,6 +5,7 @@ import pinned from "../../assets/icons/pinned.png";
 import copy from "../../assets/icons/copy.png";
 import logo from "../../assets/icons/logo.png";
 import home from "../../assets/icons/home.png";
+import menu from "../../assets/icons/menu.png";
 
 export default {
   pin,
@@ -14,4 +15,5 @@ export default {
   copy,
   logo,
   home,
+  menu,
 };

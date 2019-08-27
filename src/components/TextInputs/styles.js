@@ -17,6 +17,7 @@ export default EStyleSheet.create({
   input: {
     fontSize: 14,
     width: "100%",
-    height: responsiveHeight(4),
+    paddingHorizontal: responsiveWidth(2),
+    height: responsiveHeight(5),
   },
 });
