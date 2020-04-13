@@ -185,7 +185,7 @@ export class Home extends Component {
               <Welcome
                 title="Ooops!"
                 message="It looks like you are offline!!!"
-                emoji="sorry"
+                icon="offline"
                 navigate={() => navigate("Favorites")}
                 nextScreen="Favorites"
               />
@@ -196,7 +196,7 @@ export class Home extends Component {
               <View style={styles.listContainer}>
                 {isEmpty(results) && !isFetching ? (
                   <Welcome
-                    emoji="cool"
+                    icon="search"
                     message="Let do some digging, and see what they said!!"
                     title="Everything looks cool!"
                   />

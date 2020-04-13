@@ -13,7 +13,7 @@ const handleShare = async (description, author) => {
     await Share.share({
       message: `"${description}"- ${author}`,
       url: "https://brainyquote.com",
-      title: "TheyQuoted",
+      title: "TheySaid",
     });
   } catch (error) {
     alert("Sharing failed!");
@@ -39,7 +39,7 @@ const UserList = ({
               <Text style={styles.textStyle}>
                 {`"${description}"`}
                 {" "}
--
+                -
                 {author}
               </Text>
             </View>
