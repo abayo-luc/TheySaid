@@ -132,6 +132,7 @@ export class Favorites extends Component {
                   message="You haven't added any quote!"
                   navigate={() => navigate("Home")}
                   nextScreen="home"
+                  icon="empty"
                 />
               ) : (
                 this.renderResults()

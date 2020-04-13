@@ -7,6 +7,11 @@
 
 TheySaid is an Android and IOS app build with React Native which display the list of Popular saying and Quotes.
 
+### Screens
+
+![](img/home-dark.png)
+![](img/profile-dark.png)
+
 ### Steps to build the app:
 
 - install Expo client on your device (Android or ios)

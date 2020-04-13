@@ -1,28 +1,27 @@
 {
-  "expo": {
-    "name": "TheySaid",
-    "slug": "TheySaid",
-    "privacy": "public",
-    "sdkVersion": "34.0.0",
-    "platforms": ["ios", "android"],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/logo.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#0F1336"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.andela.TheySaid"
-    },
-    "android": {
-      "package": "com.andela.TheySaid"
-    }
-  }
+	"expo": {
+		"name": "TheySaid",
+		"slug": "TheySaid",
+		"privacy": "public",
+		"platforms": ["ios", "android"],
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/logo.png",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "cover",
+			"backgroundColor": "#0F1336"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.andela.theysaid"
+		},
+		"android": {
+			"package": "com.andela.theysaid"
+		}
+	}
 }

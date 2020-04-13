@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { View } from "react-native";
 import { Provider } from "react-redux";
 import { AppLoading } from "expo";
+import { Asset } from "expo-asset";
 import EStyleSheet from "react-native-extended-stylesheet";
 import { PersistGate } from "redux-persist/integration/react";
 import Navigator from "./config/routes";
@@ -21,7 +22,15 @@ export default class App extends Component {
     isLoadingComplete: false,
   };
 
-  loadAssetsAsync = async () => null;
+  loadAssetsAsync = async () => Promise.all([
+    Asset.loadAsync([
+      require("./assets/icons/share.png"),
+      require("./assets/icons/search.png"),
+      require("./assets/icons/pin.png"),
+      require("./assets/images/search.png"),
+      require("./assets/images/empty.png"),
+    ]),
+  ]);
 
   handleLoadingError = () => {
     // eslint-disable-next-line no-alert
