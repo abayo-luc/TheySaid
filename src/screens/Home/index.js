@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { View, FlatList, Clipboard } from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 import { isEmpty } from "lodash";
 import Container from "../../components/container/container";
 import StatusBar from "../../components/StatusBar/StatusBar";
@@ -24,8 +25,25 @@ export class Home extends Component {
       toastVisible: false,
       isSelected: false,
       selectedId: "",
+      isConnected: false,
+      message: "",
     };
+    this.unsubscribe = () => ({});
   }
+
+  componentDidMount() {
+    NetInfo.addEventListener(state => this.handleConnectivity(["wifi", "cellular"].includes(state.type) && state.isConnected));
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  handleConnectivity = (status) => {
+    this.setState({
+      isConnected: status,
+    });
+  };
 
   keyExtractor = (item, index) => `${item.cacheId}${index}`;
 
@@ -57,6 +75,7 @@ export class Home extends Component {
     this.setState(
       {
         toastVisible: true,
+        message: "Copied to clipboard",
       },
       () => {
         this.hideToast();
@@ -124,10 +143,7 @@ export class Home extends Component {
     const { categoryIndex } = this.state;
     return (
       <View style={styles.categoryContainer}>
-        <Categories
-          onPress={this.handleCategoryPress}
-          categoryIndex={categoryIndex}
-        />
+        <Categories onPress={this.handleCategoryPress} categoryIndex={categoryIndex} />
       </View>
     );
   };
@@ -153,25 +169,45 @@ export class Home extends Component {
   };
 
   render() {
-    const { results, isFetching } = this.props;
-    const { toastVisible } = this.state;
+    const {
+      results,
+      isFetching,
+      navigation: { navigate },
+    } = this.props;
+    const { toastVisible, isConnected, message } = this.state;
     return (
       <Container>
         <StatusBar barStyle="light-content" />
         {this.renderHeader()}
         <View style={styles.contentContainer}>
-          <View style={styles.content}>
-            {this.renderCategories()}
-            <View style={styles.listContainer}>
-              {isEmpty(results) && !isFetching ? (
-                <Welcome />
-              ) : (
-                this.renderResults()
-              )}
+          {!isConnected ? (
+            <View style={styles.content}>
+              <Welcome
+                title="Ooops!"
+                message="It looks like you are offline!!!"
+                emoji="sorry"
+                navigate={() => navigate("Favorites")}
+                nextScreen="Favorites"
+              />
             </View>
-          </View>
+          ) : (
+            <View style={styles.content}>
+              {this.renderCategories()}
+              <View style={styles.listContainer}>
+                {isEmpty(results) && !isFetching ? (
+                  <Welcome
+                    emoji="cool"
+                    message="Let do some digging, and see what they said!!"
+                    title="Everything looks cool!"
+                  />
+                ) : (
+                  this.renderResults()
+                )}
+              </View>
+            </View>
+          )}
         </View>
-        <Toast visible={toastVisible} message="Copied" />
+        <Toast visible={toastVisible} message={message} />
       </Container>
     );
   }
@@ -179,7 +215,9 @@ export class Home extends Component {
 
 Home.propTypes = {
   results: PropTypes.shape({}).isRequired,
-  navigation: PropTypes.shape({}).isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
   isFetching: PropTypes.bool.isRequired,
   fetchQuotes: PropTypes.func.isRequired,
   pinQuote: PropTypes.func.isRequired,
